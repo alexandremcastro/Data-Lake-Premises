@@ -70,7 +70,7 @@ Selecione a opção:
 
 ![Untitled](Datalake/Untitled%204.png)
 
-Selecione a quantidade que será alocada dinamicamente no disco virtual, recomendo no mínimo **10GB**, estarei colocando **20GB** para ter uma margem a mais mantendo o diretório padrão de onde será armazenado o disco virtual.
+Selecione a quantidade que será alocada dinamicamente no disco virtual, recomendo no mínimo **10GB**, no entanto estarei colocando **20GB** para ter uma margem a mais mantendo o diretório padrão de onde será armazenado o disco virtual.
 
 Selecione a opção:
 
@@ -104,7 +104,7 @@ Para sua criação, seguiremos praticamente os mesmos passos da criação do Nam
 A primeira alteração será no nome da máquina, neste caso será o Datanode1
 
 <aside>
-💡 Estarei utilizando 2 Datanodes para a formação do meu datalake, mas não é obrigatório possuir Datanodes, ou apenas 2 Datanodes, pode ser criado infinitos Datanodes, desde que você tenha capacidade computacional para isso.
+💡 Estarei utilizando 2 Datanodes para a formação do meu datalake, mas não é obrigatório possuir Datanodes, ou apenas 2 Datanodes. Podem ser criados infinitos Datanodes, desde que você tenha capacidade computacional para isso.
 
 </aside>
 
@@ -241,7 +241,7 @@ Selecione a opção:
 
 ![Untitled](Datalake/Untitled%2023.png)
 
-Marque a caixinha como ON embaixo do ‘botão Help!’, para habilitar a internet na máquina
+Marque a caixinha como ON embaixo do ‘botão Help!’, para habilitar a internet na máquina.
 
 Altere o Host name para o nome da sua máquina criada na etapa anterior e clique em:
 
@@ -748,7 +748,7 @@ export PATH=$PATH:$JAVA_HOME/bin:$JRE_HOME/bin
 
 ![Untitled](Datalake/Untitled%2059.png)
 
-Para atualizar o arquivo de variáveis de ambiente rode o comando 
+Para atualizar o arquivo de variáveis de ambiente rode o comando:
 
 ```bash
 source .bash_profile
@@ -1120,7 +1120,7 @@ http://192.168.1.16:8088/cluster
 
 ![Untitled](Datalake/Untitled%2088.png)
 
-Tudo funcionando corretamente, irei desligar o Hadoop
+Tudo funcionando corretamente, irei desligar o Hadoop.
 
 ```bash
 $HADOOP_HOME/sbin/stop-all.sh
@@ -1283,7 +1283,7 @@ Verifique se chegou corretamente no consumer.
 
 ![Untitled](Datalake/Untitled%20103.png)
 
-Tudo funcionando! podemos encerrar todos os serviços.
+Tudo funcionando! Podemos encerrar todos os serviços.
 
 ```bash
 bin/zookeeper-server-stop.sh config/zookeeper.properties
@@ -1754,7 +1754,7 @@ sudo wget https://dev.mysql.com/get/Downloads/Connector-J/mysql-connector-j-8.0.
 
 ![Untitled](Datalake/Untitled%20145.png)
 
-Após baixar é hora de extrair
+Após baixar é hora de extrair:
 
 ```bash
 sudo unzip mysql-connector-j-8.0.31.zip
@@ -1835,7 +1835,7 @@ flush privileges;
 
 ![Untitled](Datalake/Untitled%20152.png)
 
-Agora é hora de configurar o Hive .
+Agora é hora de configurar o Hive.
 
 Entre no diretório `/opt/hive/conf`,crie o arquivo `hive-site.xml` e insira as configurações.
 
