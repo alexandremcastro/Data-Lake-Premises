@@ -1,12 +1,3 @@
----
-title: "Implementação de um Data Lake On-Premises"
-description: "Implementação de um Data Lake On-Premises utilizando as principais tecnologias do mercado (Hadoop, Kafka, Nifi, Spark e Hive)."
-image: "/images/datalake.jpg"
-date: "2022-11-10T16:56:47+06:00"
-author: "Alexandre Castro"
-categories: ["Data Lake"]
-tags: ["Hadoop", "Kafka", "Nifi", "Spark", "Hive"]
----
 Link para o projeto no 
 [Notion](https://castroiwnl.notion.site/castroiwnl/Data-Lake-On-Premises-9845115c23374331a7a65c658fe3eeb1)
 
