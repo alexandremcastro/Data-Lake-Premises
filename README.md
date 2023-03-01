@@ -1964,11 +1964,11 @@ Após todas essas instalações, o Data Lake está pronto para uso.<br/>
 
 Link para o download das 3 VMS com todas as máquinas já configuradas:<br/>
 
-[Namenode](https://drive.google.com/file/d/1NrVKQ5mOb87hJMWtXDEWQa_Fg3f8GavX/view?usp=sharing)<br/>
+[Namenode](https://drive.google.com/file/d/1NrVKQ5mOb87hJMWtXDEWQa_Fg3f8GavX/view)<br/>
 
-[Datanode1](https://drive.google.com/file/d/1L7h5wPItRQrJplu9TPQphhLXLvJ7Fys3/view?usp=sharing)<br/>
+[Datanode1](https://drive.google.com/file/d/1fn7T5Uj0oq8kOxIRWwCQBj7NLmxcerhl/view)<br/>
 
-[Datanode2](https://drive.google.com/file/d/1fn7T5Uj0oq8kOxIRWwCQBj7NLmxcerhl/view?usp=sharing)<br/>
+[Datanode2](https://drive.google.com/file/d/1L7h5wPItRQrJplu9TPQphhLXLvJ7Fys3/view)<br/>
 
 ---
 
