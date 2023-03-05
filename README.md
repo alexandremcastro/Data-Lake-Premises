@@ -1887,7 +1887,7 @@ Agora rodamos o comando `Hive`
 
 ![Untitled](Datalake/Untitled%20155.png)
 
-Concluído a instalação!
+Concluído a instalação
 
 
 - **Testando o Hive**
