@@ -1,11 +1,62 @@
+# Sumário
++ [Introdução](#Introducao)
+    + [Links](#Links)
+        + [Link para o projeto no Notion](#Notion)
+        + [Link para o projeto no Site](#Site)
+    + [Preparando as máquinas](#Arquitetura-do-projeto)
+        + [Criação do Namenode](#Namenode)
+        + [Criação do Datanode](#Datanode)
+    + [Instalação do Linux (CentOS)](#CentOS)
+        + [Instalação do CentOS no Namenode](#CentOSNamenode)
+        + [Instalação do CentOS no Datanode](#CentOSDatanode)
+    + [Configuração inicial do Linux](#Linux)
+        + [Configuração do Sudoers](#Sudoers)
+        + [Atualizando o sistema](#Atualizacao)
+        + [Configurando o arquivo hosts](#Hosts)
+        + [Configurando o arquivo sshd_config](#SSHD)
+        + [Configurando as chaves de segurança SSH](#SSH)
+    + [Instalação e configuração do Java JDK 8](#Java)
++ [Instalando e configurando os componentes](#Componentes)
+    + [Instalação e configuração do Apache Hadoop](#Hadoop)
+        + [Configuração do Hadoop](#ConfiguracaoHadoop)
+        + [Inicialização do Hadoop](#InicializacaoHadoop)
+    + [Instalação e configuração do Apache Kafka](#Kafka)
+    + [Instalação e configuração do Apache Nifi](#Nifi)
+    + [Instalação e configuração do Apache Spark](#Spark)
+        + [Configurando o Spark em Multinode Cluster](#Cluster)
+    + [Instalação e configuração do Apache Hive](#Hive)
+        + [Configuração do Metastore com Banco de Dados Oracle](#Oracle)
+        + [Configuração do Metastore com Banco de Dados MySQL](#MySQL)
+        + [Testando o Hive](#HiveTest)
+
+<a name = "Introducao"></a>
+## Introdução
+
+### Links <a name = "Links"></a>
+
+<a name = "Notion"></a>
 Link para o projeto no 
 [Notion](https://alexandremcastro.notion.site/12-2022-Data-Lake-On-Premises-9845115c23374331a7a65c658fe3eeb1)
 
+<a name = "Site"></a>
 Link para o projeto no
 [Site](https://alexandre-castro.vercel.app/blog/datalake-premises)
 
+<br>
 
-- Preparando as máquinas
+<a name = "Arquitetura-do-projeto"></a>
+
+### Arquitetura do projeto
+
+Projeto ponta a ponta de Big Data utilizando as principais ferramentas do ecossistema Hadoop/Apache, bancos de dados Oracle e MySQL e Linux (CentOS) com máquinas virtuais, fornecendo um ambiente completo de um Data Lake, desde como baixar até o seu funcionamento por completo.
+
+Essa será a arquitetura a ser seguida no projeto:
+
+![Group](Imagens/Group.png)
+
+<br>
+
+### Preparando as máquinas
 
 Antes de qualquer passo, para este projeto, estarei utilizando o Virtualbox da Oracle para a virtualização das máquinas, mas não é obrigatório a utilização deste, podendo ser qualquer outro virtualizador, desde de que seja possível a configuração de rede das máquinas.
 
@@ -14,11 +65,14 @@ Iniciar o Virtualbox e selecionar a opção:
 
 - Novo
 
-![Captura de tela de 2022-11-09 10-38-04.png](Datalake/Captura_de_tela_de_2022-11-09_10-38-04.png)
+![Captura de tela de 2022-11-09 10-38-04.png](Imagens/Captura_de_tela_de_2022-11-09_10-38-04.png)
 
 Segue o modelo de criação das diferentes máquinas:
 
-- **Criação do Namenode**
+<br>
+
+<a name = "Namenode"></a>
+<b>Criação do Namenode</b>
 
 <aside>
 💡 É obrigatório a criação do Namenode, por mais que um dia não vá utilizar nenhum Datanode.
@@ -31,7 +85,7 @@ Selecione a opção:
 
 - Próximo (N) >
 
-![Untitled](Datalake/Untitled.png)
+![Untitled](Imagens/Untitled.png)
 
 Em seguida selecione a quantidade de memória que será alocada a máquina, para o Namenode é importante que seja um pouco mais forte do que os Datanodes, já que ele que será o orquestrador do Hadoop, neste caso estarei alocando **4GB** de memória RAM.
 
@@ -39,7 +93,7 @@ Selecione a opção:
 
 - Próximo (N) >
 
-![Untitled](Datalake/Untitled%201.png)
+![Untitled](Imagens/Untitled%201.png)
 
 Criação do disco rígido virtual para armazenamento dos dados da máquina.
 
@@ -48,14 +102,14 @@ Selecione a opção:
 - Criar um novo disco rígido virtual agora
 - Próximo (N) >
 
-![Untitled](Datalake/Untitled%202.png)
+![Untitled](Imagens/Untitled%202.png)
 
 Selecione a opção:
 
 - VDI (VirtualBOX Disk Image)
 - Próximo (N) >
 
-![Untitled](Datalake/Untitled%203.png)
+![Untitled](Imagens/Untitled%203.png)
 
 Selecione a opção:
 
@@ -68,7 +122,7 @@ Selecione a opção:
 
 - Próximo (N) >
 
-![Untitled](Datalake/Untitled%204.png)
+![Untitled](Imagens/Untitled%204.png)
 
 Selecione a quantidade que será alocada dinamicamente no disco virtual, recomendo no mínimo **10GB**, no entanto estarei colocando **20GB** para ter uma margem a mais mantendo o diretório padrão de onde será armazenado o disco virtual.
 
@@ -76,7 +130,7 @@ Selecione a opção:
 
 - Criar
 
-![Untitled](Datalake/Untitled%205.png)
+![Untitled](Imagens/Untitled%205.png)
 
 Após isso, foi criado o Namenode, agora temos que alterar as configurações de rede, para as máquinas poderem se comunicarem entre si.
 
@@ -84,7 +138,7 @@ Selecione a opção:
 
 - Configurações
 
-![Untitled](Datalake/Untitled%206.png)
+![Untitled](Imagens/Untitled%206.png)
 
 Abrirá a tela de configurações, vá na aba Rede.
 
@@ -93,11 +147,14 @@ Clique em:
 - Conectado e selecione a opção ‘Placa em modo Bridge’
 - Clique em OK
 
-![Untitled](Datalake/Untitled%207.png)
+![Untitled](Imagens/Untitled%207.png)
 
 Seguindo esses passos, o Namenode agora está habilitado a ter seu IP próprio para realizar a configuração de conexão entre os clusters.
 
-- **Criação do Datanode**
+<br>
+
+<a name = "Datanode"></a>
+<b>Criação do Datanode</b>
 
 Para sua criação, seguiremos praticamente os mesmos passos da criação do Namenode, com apenas duas alterações.
 
@@ -108,20 +165,18 @@ A primeira alteração será no nome da máquina, neste caso será o Datanode1
 
 </aside>
 
-![Untitled](Datalake/Untitled%208.png)
+![Untitled](Imagens/Untitled%208.png)
 
 A segunda alteração será na quantidade de memória, alocarei apenas **2GB**, porque como citei na criação do Namenode, os Datanodes podem ter menos poder computacional.
 
-![Untitled](Datalake/Untitled%209.png)
+![Untitled](Imagens/Untitled%209.png)
 
+<br>
 
-
----
-
-- Instalação do CentOS
+<a name = "CentOS"></a>
+### Instalação do Linux (CentOS)
 
 Para a instalação do sistema operacional, é necessário baixar a ISO dele, neste caso estarei utilizando a versão Minimal do CentOS, para baixo consumo de recursos e ganho de performance nos clusters.
-
 
 Acesse a página de Download do CentOS
 
@@ -133,26 +188,30 @@ Selecione a opção:
 
 - x86_64
 
+<br>
 <aside>
 💡 Também é possível escolher outras versões caso a x86_64 não seja compatível com seu virtualizador ou máquina.
-
 </aside>
+<br>
 
-![Untitled](Datalake/Untitled%2010.png)
+![Untitled](Imagens/Untitled%2010.png)
 
 Selecione um dos mirrors de Download, estarei selecionando o [primeiro](http://mirror.uepg.br/centos/7.9.2009/isos/x86_64/)
 
-![Untitled](Datalake/Untitled%2011.png)
+![Untitled](Imagens/Untitled%2011.png)
 
 Selecione a opção:
 
 - CentOS-7-x86_64-Minimal-2009.iso
 
-![Untitled](Datalake/Untitled%2012.png)
+![Untitled](Imagens/Untitled%2012.png)
 
 Após realizar o Download é hora de instalar o CentOS nas máquinas que foram criadas.
 
-- **Instalação do CentOS no Namenode**
+<br>
+
+<a name = "CentOSNamenode"></a>
+<b>Instalação do CentOS no Namenode</b>
 
 Abra o Virtual Box, clique no Namenode.
 
@@ -165,11 +224,11 @@ Selecione a opção:
 
 - Iniciar (T)
 
-![Untitled](Datalake/Untitled%2013.png)
+![Untitled](Imagens/Untitled%2013.png)
 
 Abra essa janela, clique no símbolo da pasta ao lado do campo de seleção.
 
-![Untitled](Datalake/Untitled%2014.png)
+![Untitled](Imagens/Untitled%2014.png)
 
 Selecione o diretório da ISO do CentOS (CentOS-7-x86_64-Minimal-2009.iso).
 
@@ -177,19 +236,19 @@ Clique em:
 
 - Acrescentar
 
-![Untitled](Datalake/Untitled%2015.png)
+![Untitled](Imagens/Untitled%2015.png)
 
 Após selecionar a ISO clique em:
 
 - Iniciar
 
-![Untitled](Datalake/Untitled%2016.png)
+![Untitled](Imagens/Untitled%2016.png)
 
 Após iniciar, selecione a opção:
 
 - Install CentOS 7
 
-![Untitled](Datalake/Untitled%2017.png)
+![Untitled](Imagens/Untitled%2017.png)
 
 Após as telas de logs, aparecerá o instalador do CentOS.
 
@@ -199,7 +258,7 @@ Selecione a opção:
 
 - Continue
 
-![Untitled](Datalake/Untitled%2018.png)
+![Untitled](Imagens/Untitled%2018.png)
 
 Agora vou configurar as opções de região, data e hora.
 
@@ -207,7 +266,7 @@ Selecione a opção:
 
 - DATE & TIME
 
-![Untitled](Datalake/Untitled%2019.png)
+![Untitled](Imagens/Untitled%2019.png)
 
 Marque a região mais próxima de onde você se localiza
 
@@ -215,7 +274,7 @@ Selecione a opção:
 
 - Done
 
-![Untitled](Datalake/Untitled%2020.png)
+![Untitled](Imagens/Untitled%2020.png)
 
 Indicando o destino de onde será instalado o SO.
 
@@ -223,7 +282,7 @@ Desça a tela e selecione a opção:
 
 - INSTALLATION DESTINATION
 
-![Untitled](Datalake/Untitled%2021.png)
+![Untitled](Imagens/Untitled%2021.png)
 
 Marque o disco virtual criado na etapa anterior.
 
@@ -231,7 +290,7 @@ Selecione a opção:
 
 - Done
 
-![Untitled](Datalake/Untitled%2022.png)
+![Untitled](Imagens/Untitled%2022.png)
 
 Configuração de rede e nome do Host
 
@@ -239,7 +298,7 @@ Selecione a opção:
 
 - NETWORK & HOST NAME
 
-![Untitled](Datalake/Untitled%2023.png)
+![Untitled](Imagens/Untitled%2023.png)
 
 Marque a caixinha como ON embaixo do ‘botão Help!’, para habilitar a internet na máquina.
 
@@ -248,7 +307,7 @@ Altere o Host name para o nome da sua máquina criada na etapa anterior e clique
 - Apply
 - Done
 
-![Untitled](Datalake/Untitled%2024.png)
+![Untitled](Imagens/Untitled%2024.png)
 
 Começar a instalação do SO.
 
@@ -256,7 +315,7 @@ Clique em:
 
 - Begin Installation
 
-![Untitled](Datalake/Untitled%2025.png)
+![Untitled](Imagens/Untitled%2025.png)
 
 Configuração da senha do usuário Root
 
@@ -264,7 +323,7 @@ Clique em:
 
 - ROOT PASSWORD
 
-![Untitled](Datalake/Untitled%2026.png)
+![Untitled](Imagens/Untitled%2026.png)
 
 Definindo uma senha para o Root
 
@@ -272,7 +331,7 @@ Insira uma senha segura e clique em:
 
 - Done
 
-![Untitled](Datalake/Untitled%2027.png)
+![Untitled](Imagens/Untitled%2027.png)
 
 Criação de um usuário
 
@@ -280,31 +339,31 @@ Clique em:
 
 - USER CREATION
 
-![Untitled](Datalake/Untitled%2028.png)
+![Untitled](Imagens/Untitled%2028.png)
 
 Preencha o nome do usuário e crie uma senha segura para ele, depois clique em:
 
 - Done
 
-![Untitled](Datalake/Untitled%2029.png)
+![Untitled](Imagens/Untitled%2029.png)
 
 Após toda a configuração, espere a barra de instalação completar e aperte o botão:
 
 - Reboot
 
-![Untitled](Datalake/Untitled%2030.png)
+![Untitled](Imagens/Untitled%2030.png)
 
-- **Instalação do CentOS no Datanode**
+<a name = "CentOSDatanode"></a>
+<b> Instalação do CentOS no Datanode </b>
 
 A instalação no Datanode é praticamente igual ao do Namenode, porém é necessário alterar o Host name para o nome da sua máquina Datanode, repita esse processo para todos os Datanodes.
 
-![Untitled](Datalake/Untitled%2031.png)
+![Untitled](Imagens/Untitled%2031.png)
 
+<br>
 
-
----
-
-- Configuração inicial do Linux
+<a name = "Linux"></a>
+### Configuração inicial do Linux
 
 Para começar a configurar as máquinas, estarei me conectando através do SSH da minha máquina local nas máquinas virtuais no terminal.
 
@@ -322,27 +381,27 @@ Selecione o Namenode e os Datanodes e clique em:
 
 - Iniciar (T)
 
-![Untitled](Datalake/Untitled%2032.png)
+![Untitled](Imagens/Untitled%2032.png)
 
 Abrirá neste menu.
 
 Selecione a primeira opção apertando o ‘Enter’ do teclado.
 
-![Untitled](Datalake/Untitled%2033.png)
+![Untitled](Imagens/Untitled%2033.png)
 
 Após iniciar e aguardar os logs de inicialização, faça o login criado na instalação, realizado na  etapa anterior.
 
-![Untitled](Datalake/Untitled%2034.png)
+![Untitled](Imagens/Untitled%2034.png)
 
 Repita esse processo para todos os Datanodes.
 
 Datanode1:
 
-![Untitled](Datalake/Untitled%2035.png)
+![Untitled](Imagens/Untitled%2035.png)
 
 Datanode2: 
 
-![Untitled](Datalake/Untitled%2036.png)
+![Untitled](Imagens/Untitled%2036.png)
 
 Após ligar e logar em todas máquinas, precisamos do IP de cada uma delas para realizar a conexão via SSH. Entre em cada máquina e colete o IP delas através do comando:
 
@@ -350,7 +409,7 @@ Após ligar e logar em todas máquinas, precisamos do IP de cada uma delas para 
 ip a 
 ```
 
-![Untitled](Datalake/Untitled%2037.png)
+![Untitled](Imagens/Untitled%2037.png)
 
 IP das minhas máquinas:
 
@@ -359,11 +418,11 @@ Namenode: 192.168.1.16
 Datanode1: 192.168.1.14
 Datanode2: 192.168.1.15
 ```
-
+<br>
 <aside>
 💡 Vale ressaltar que esses IP’s não serão necessariamente iguais aos meus (mesmo podendo ser também), por isso é importante anotar eles.
-
 </aside>
+<br>
 
 Após as coletas, abra o Terminal da sua máquina local e insira o comando:
 
@@ -394,7 +453,7 @@ Conectando com a minha máquina no Namenode:
 ssh datalake@192.168.1.16
 ```
 
-![Neste momento já estou conectado ao meu Namenode pelo SSH na minha máquina local.](Datalake/Untitled%2038.png)
+![Neste momento já estou conectado ao meu Namenode pelo SSH na minha máquina local.](Imagens/Untitled%2038.png)
 
 Neste momento já estou conectado ao meu Namenode pelo SSH na minha máquina local.
 
@@ -406,7 +465,7 @@ Conexão com o Datanode1:
 ssh datalake@192.168.1.14
 ```
 
-![Untitled](Datalake/Untitled%2039.png)
+![Untitled](Imagens/Untitled%2039.png)
 
 Conexão com o Datanode2:
 
@@ -414,11 +473,14 @@ Conexão com o Datanode2:
 ssh datalake@192.168.1.15
 ```
 
-![Untitled](Datalake/Untitled%2040.png)
+![Untitled](Imagens/Untitled%2040.png)
 
 Agora, estamos oficialmente 100% prontos para as configurações do Linux.
 
-- **Configuração do Sudoers**
+<br>
+
+<a name = "Sudoers"></a>
+<b> Configuração do Sudoers </b>
 
 <aside>
 💡 É necessário realizar esse passo para todas as máquinas.
@@ -445,7 +507,7 @@ Insira dentro do arquivo o nome do usuário datalake.
 datalake    ALL=(ALL)    ALL
 ```
 
-![Untitled](Datalake/Untitled%2041.png)
+![Untitled](Imagens/Untitled%2041.png)
 
 Salve o arquivo e saia do perfil Root, executando o comando:
 
@@ -453,7 +515,10 @@ Salve o arquivo e saia do perfil Root, executando o comando:
 exit
 ```
 
-- **Atualizando o sistema**
+<br>
+
+<a name = "Atualizacao"></a>
+<b> Atualizando o sistema</b>
 
 <aside>
 💡 É necessário realizar esse passo para todas as máquinas.
@@ -468,9 +533,11 @@ sudo yum update
 
 Quando terminar a atualização ele mostrará uma mensagem de concluído na tela.
 
-![Untitled](Datalake/Untitled%2042.png)
+![Untitled](Imagens/Untitled%2042.png)
 
-- **Configurando o arquivo hosts**
+<br>
+<a name = "Hosts"></a>
+<b>Configurando o arquivo hosts</b>
 
 Para as máquinas poderem se comunicar entre si, temos que configurar as chaves de segurança SSH, para esta tarefa precisamos primeiro configurar o arquivo hosts das nossas máquinas.
 
@@ -487,11 +554,11 @@ Informe para o arquivo hosts qual são os IP’s das máquinas que ele fará con
 192.168.1.15   datanode2
 ```
 
-![Untitled](Datalake/Untitled%2043.png)
+![Untitled](Imagens/Untitled%2043.png)
 
 Repita esse processo para todas as máquinas modificando os IP’s e nomes das máquinas.
 
-![Untitled](Datalake/Untitled%2044.png)
+![Untitled](Imagens/Untitled%2044.png)
 
 Depois de configurado, devemos testar para ver se as máquinas estão se comunicando entre-si, só rodar o comando em qualquer máquina:
 
@@ -500,11 +567,14 @@ ping datanode1
 ping datanode2
 ```
 
-![Caso o ping esteja retornando os milissegundos entre as conexões, significa que foi configurado corretamente.](Datalake/Untitled%2045.png)
+![Caso o ping esteja retornando os milissegundos entre as conexões, significa que foi configurado corretamente.](Imagens/Untitled%2045.png)
 
 Caso o ping esteja retornando os milissegundos entre as conexões, significa que foi configurado corretamente.
 
-- **Configurando o arquivo sshd_config**
+<br>
+
+<a name = "SSHD"></a>
+<b>Configurando o arquivo sshd_config</b>
 
 Para habilitar a conexão via SSH entre máquinas é necessário configurar o arquivo sshd_config, nele estão as configurações de conexão do SSH.
 
@@ -527,7 +597,7 @@ ListenAddress ::
 PubkeyAuthentication yes
 ```
 
-![Untitled](Datalake/Untitled%2046.png)
+![Untitled](Imagens/Untitled%2046.png)
 
 Por último reinicie o serviço do sshd para alterar as configurações feitas:
 
@@ -537,7 +607,10 @@ sudo systemctl restart sshd
 
 Pronto! Arquivo `sshd` devidamente configurado. 
 
-- **Configurando as chaves de segurança SSH**
+<br>
+
+<a name = "SSH"></a>
+<b>Configurando as chaves de segurança SSH</b>
 
 Após a configuração do arquivo hosts e arquivo sshd, agora é hora de configurar o SSH.
 
@@ -561,7 +634,7 @@ Caso queira fazer alguma modificação na chave, você tem essa opção, no meu 
 
 </aside>
 
-![Untitled](Datalake/Untitled%2047.png)
+![Untitled](Imagens/Untitled%2047.png)
 
 Para verificar a criação da chave utilize o comando:
 
@@ -577,7 +650,7 @@ comando:
 cat ~/.ssh/id_rsa
 ```
 
-![Untitled](Datalake/Untitled%2048.png)
+![Untitled](Imagens/Untitled%2048.png)
 
 Chave gerada! É necessário copiar essa chave para o próprio usuário datalake
 
@@ -598,7 +671,7 @@ ssh-copy-id -i ~/.ssh/id_rsa datalake@datanode1
 ssh-copy-id -i ~/.ssh/id_rsa datalake@datanode2
 ```
 
-![Será solicitado a confirmação da conexão, só responder com `yes` e também será solicitado a senha do usuário.](Datalake/Untitled%2049.png)
+![Será solicitado a confirmação da conexão, só responder com `yes` e também será solicitado a senha do usuário.](Imagens/Untitled%2049.png)
 
 Será solicitado a confirmação da conexão, só responder com `yes` e também será solicitado a senha do usuário.
 
@@ -614,7 +687,7 @@ Repita esse comando para todos os Datanodes.
 
 </aside>
 
-![Untitled](Datalake/Untitled%2050.png)
+![Untitled](Imagens/Untitled%2050.png)
 
 Para verificar o funcionamento da chave, vou conectar através do SSH nos Datanodes.
 
@@ -623,7 +696,7 @@ ssh datalake@datanode1 -i ~/.ssh/id_rsa
 ssh datalake@datanode2 -i ~/.ssh/id_rsa
 ```
 
-![Conexão feita com sucesso, sem solicitar a senha, perceba que agora possui duas janelas de Datanode1. Verifique se os outros Datanodes também estão se conectando via SSH sem pedir senha.](Datalake/Untitled%2051.png)
+![Conexão feita com sucesso, sem solicitar a senha, perceba que agora possui duas janelas de Datanode1. Verifique se os outros Datanodes também estão se conectando via SSH sem pedir senha.](Imagens/Untitled%2051.png)
 
 Conexão feita com sucesso, sem solicitar a senha, perceba que agora possui duas janelas de Datanode1. Verifique se os outros Datanodes também estão se conectando via SSH sem pedir senha.
 
@@ -635,11 +708,9 @@ exit
 
 Chave configurada, tudo oficialmente pronto para o início da instalação do Hadoop.
 
-
-
----
-
-- Instalação e configuração do Java JDK 8
+<br>
+<a name = "Java"></a>
+### Instalação e configuração do Java JDK 8
 
 Maior parte das aplicações da Apache roda sobre o Java, para isso devemos instalar o Java JDK, estarei utilizando a versão 8 porque é compatível com maior parte dos componentes, por mais que a versão do Hadoop atual suporte o Java 11.
  
@@ -649,7 +720,7 @@ Maior parte das aplicações da Apache roda sobre o Java, para isso devemos inst
 
 </aside>
 
-**Download do Java 8**
+<b>Download do Java 8</b>
 
 Para isso é necessário baixar o Java JDK 8 através do seguinte link:
 
@@ -666,17 +737,19 @@ Baixe a opção na sua máquina local:
 
 </aside>
 
-![Untitled](Datalake/Untitled%2052.png)
+![Untitled](Imagens/Untitled%2052.png)
 
 Será solicitado o login, caso não tenha, faça um cadastro no site da Oracle.
 
 [https://profile.oracle.com/myprofile/account/create-account.jspx](https://profile.oracle.com/myprofile/account/create-account.jspx)
 
-![Untitled](Datalake/Untitled%2053.png)
+![Untitled](Imagens/Untitled%2053.png)
 
 Após o login o Download será iniciado automaticamente.
 
-**Copiando o Java para as máquinas**
+<br>
+
+<b>Copiando o Java para as máquinas</b>
 
 Depois de baixar, faremos a cópia desse arquivo.
 
@@ -686,7 +759,7 @@ Abra o terminal da sua máquina local, onde foi baixado o Java e execute o coman
 scp /caminho/jdk-8u202-linux-x64.tar.gz root@ipdonamenode:/opt
 ```
 
-![Untitled](Datalake/Untitled%2054.png)
+![Untitled](Imagens/Untitled%2054.png)
 
 Faça a cópia do Java para os Datanodes também
 
@@ -694,11 +767,11 @@ Faça a cópia do Java para os Datanodes também
 scp /caminho/jdk-8u202-linux-x64.tar.gz root@ipdodatanode:/opt
 ```
 
-![Untitled](Datalake/Untitled%2055.png)
+![Untitled](Imagens/Untitled%2055.png)
 
 Após a execução, verifique se a cópia realmente foi feita. Acesse o diretório `/opt/` das máquinas e execute o comando `ls -la` para verificar se o arquivo foi realmente copiado
 
-![Untitled](Datalake/Untitled%2056.png)
+![Untitled](Imagens/Untitled%2056.png)
 
 Após verificar estamos preparados para instalar o Java.
 
@@ -707,7 +780,7 @@ Após verificar estamos preparados para instalar o Java.
 
 </aside>
 
-**Instalação do Java 8**
+### Instalação do Java 8 
 
 Para a instalação, o primeiro passo é extrair o conteúdo do arquivo jdk-8u202-linux-x64.tar.gz,
 
@@ -723,7 +796,7 @@ Verificando se foi extraído corretamente:
 ls -la
 ```
 
-![Untitled](Datalake/Untitled%2057.png)
+![Untitled](Imagens/Untitled%2057.png)
 
 Agora irei apagar o arquivo compactado, renomear o diretório criado para JDK e alterar o dono e grupo, seguindo uma boa prática de padronização.
 
@@ -734,7 +807,7 @@ ls -la
 sudo chown -R root:root jdk/
 ```
 
-![Untitled](Datalake/Untitled%2058.png)
+![Untitled](Imagens/Untitled%2058.png)
 
 Para dar continuidade a instalação, precisa configurar as variáveis de ambiente, para isso edite o arquivo `.bash_profile`, localizado no `~/`
 
@@ -746,7 +819,7 @@ export JRE_HOME=/opt/jdk/jre
 export PATH=$PATH:$JAVA_HOME/bin:$JRE_HOME/bin
 ```
 
-![Untitled](Datalake/Untitled%2059.png)
+![Untitled](Imagens/Untitled%2059.png)
 
 Para atualizar o arquivo de variáveis de ambiente rode o comando:
 
@@ -760,33 +833,36 @@ Para verificar se tudo está configurado corretamente, rode o comando
 java -version
 ```
 
-![Caso apareça a versão, significa que tudo está corretamente configurado.](Datalake/Untitled%2060.png)
+![Caso apareça a versão, significa que tudo está corretamente configurado.](Imagens/Untitled%2060.png)
 
 Caso apareça a versão, significa que tudo está corretamente configurado.
 
 Agora é possível a instalação do Hadoop.
 
+<br>
 
----
+<a name = "Componentes"></a>
+## Instalando e configurando os componentes
 
-- Instalação e configuração do Apache Hadoop
+<br>
+<a name = "Hadoop"></a>
+### Instalação e configuração do Apache Hadoop
 
 <aside>
 💡 Para a instalação do Hadoop, certifique que todas as máquinas estejam iniciadas e com o Java JDK instalado.
-
 </aside>
 
 Primeiro passo é fazer o Download do arquivo binário do Hadoop 3.3.4:
 
 [https://hadoop.apache.org/releases.html](https://hadoop.apache.org/releases.html)
 
-![Untitled](Datalake/Untitled%2061.png)
+![Untitled](Imagens/Untitled%2061.png)
 
 Copie o link de Download
 
 [https://dlcdn.apache.org/hadoop/common/hadoop-3.3.4/hadoop-3.3.4.tar.gz](https://dlcdn.apache.org/hadoop/common/hadoop-3.3.4/hadoop-3.3.4.tar.gz)
 
-![Untitled](Datalake/Untitled%2062.png)
+![Untitled](Imagens/Untitled%2062.png)
 
 Abra o terminal do Namenode, vá ao diretório `/opt/` e insira o comando `wget` com o link do Hadoop:
 
@@ -799,7 +875,7 @@ Abra o terminal do Namenode, vá ao diretório `/opt/` e insira o comando `wget`
 sudo wget https://dlcdn.apache.org/hadoop/common/hadoop-3.3.4/hadoop-3.3.4.tar.gz
 ```
 
-![Untitled](Datalake/Untitled%2063.png)
+![Untitled](Imagens/Untitled%2063.png)
 
 Verificando, extraindo, removendo o arquivo compactado e alterando o nome do diretório.
 
@@ -810,7 +886,7 @@ sudo rm -rf hadoop-3.3.4.tar.gz
 sudo mv hadoop-3.3.4/ /opt/hadoop
 ```
 
-![Untitled](Datalake/Untitled%2064.png)
+![Untitled](Imagens/Untitled%2064.png)
 
 Adotando novamente outro padrão, estarei colocando no usuário datalake todas as instalações dos componentes Apache.
 
@@ -818,7 +894,7 @@ Adotando novamente outro padrão, estarei colocando no usuário datalake todas a
 sudo chown -R datalake:datalake hadoop/
 ```
 
-![Untitled](Datalake/Untitled%2065.png)
+![Untitled](Imagens/Untitled%2065.png)
 
 Agora irei configurar as variáveis de ambiente do meu usuário datalake inserindo as seguintes configurações:
 
@@ -828,7 +904,7 @@ export HADOOP_CONF_DIR="${HADOOP_HOME}/etc/hadoop"
 export PATH=$PATH:$HADOOP_HOME/bin
 ```
 
-![Untitled](Datalake/Untitled%2066.png)
+![Untitled](Imagens/Untitled%2066.png)
 
 Agora podemos testar a versão do Hadoop, caso as variáveis de ambiente tenham sido corretamente configuradas.
 
@@ -836,9 +912,12 @@ Agora podemos testar a versão do Hadoop, caso as variáveis de ambiente tenham 
 hadoop version
 ```
 
-![Untitled](Datalake/Untitled%2067.png)
+![Untitled](Imagens/Untitled%2067.png)
 
-- **Configuração do Hadoop**
+<br>
+
+<a name = "ConfiguracaoHadoop"></a>
+<b> Configuração do Hadoop</b>
 
 Após a instalação e configuração das variáveis de ambiente, precisamos configurar o Hadoop, para isso é necessário entrar no diretório: `/opt/hadoop/etc/hadoop`
 
@@ -852,7 +931,7 @@ export PATH="${PATH}:${HADOOP_HOME}/bin"
 export HADOOP_SSH_OPTS="-i ~/.ssh/id_rsa"
 ```
 
-![Untitled](Datalake/Untitled%2068.png)
+![Untitled](Imagens/Untitled%2068.png)
 
 Configurando o arquivo `core-site.xml`
 
@@ -863,7 +942,7 @@ Apague as tags `configuration`.
 
 </aside>
 
-![Untitled](Datalake/Untitled%2069.png)
+![Untitled](Imagens/Untitled%2069.png)
 
 Insira as seguintes configurações:
 
@@ -876,7 +955,7 @@ Insira as seguintes configurações:
 </configuration>
 ```
 
-![Untitled](Datalake/Untitled%2070.png)
+![Untitled](Imagens/Untitled%2070.png)
 
 Configurando o `hdfs-site.xml`
 
@@ -899,7 +978,7 @@ Insira as seguintes configurações:
 </configuration>
 ```
 
-![Untitled](Datalake/Untitled%2071.png)
+![Untitled](Imagens/Untitled%2071.png)
 
 Configurando o `mapred-site.xml`
 
@@ -934,7 +1013,7 @@ Insira as seguintes configurações:
 </configuration>
 ```
 
-![Untitled](Datalake/Untitled%2072.png)
+![Untitled](Imagens/Untitled%2072.png)
 
 Configurando o `yarn-site.xml`
 
@@ -990,7 +1069,7 @@ Insira as seguintes configurações:
 </configuration>
 ```
 
-![Untitled](Datalake/Untitled%2073.png)
+![Untitled](Imagens/Untitled%2073.png)
 
 Por último a configuração do arquivo `workers`, nele serão inseridos os Datanodes que farão comunicação com o Namenode. Insira o nome dos Datanodes.
 
@@ -999,7 +1078,7 @@ Por último a configuração do arquivo `workers`, nele serão inseridos os Data
 
 </aside>
 
-![Untitled](Datalake/Untitled%2074.png)
+![Untitled](Imagens/Untitled%2074.png)
 
 Configuração finalizada, mas antes de rodar o Hadoop, precisamos criar os diretórios onde serão salvo os logs e registros do HDFS, para isso executei os comandos:
 
@@ -1024,7 +1103,7 @@ Para fazer a copiar do Hadoop para os Datanodes, é essencial que seja criado a 
 sudo mkdir /opt/hadoop 
 ```
 
-![Untitled](Datalake/Untitled%2075.png)
+![Untitled](Imagens/Untitled%2075.png)
 
 Caso esteja usando o padrão que estou seguindo, é importante alterar o dono e o grupo do diretório para datalake, igualmente feito no Namenode.
 
@@ -1032,7 +1111,7 @@ Caso esteja usando o padrão que estou seguindo, é importante alterar o dono e 
 sudo chown -R datalake:datalake hadoop/
 ```
 
-![Untitled](Datalake/Untitled%2076.png)
+![Untitled](Imagens/Untitled%2076.png)
 
 Agora posso fazer a cópia do diretório Hadoop configurado no Namenode para os Datanodes, utilizando a chave de segurança SSH.
 
@@ -1043,11 +1122,11 @@ scp -rv -i "~/.ssh/id_rsa" /opt/hadoop datalake@datanode2:/opt
 
 Ao terminar a cópia aparecerá essa tela:
 
-![Untitled](Datalake/Untitled%2077.png)
+![Untitled](Imagens/Untitled%2077.png)
 
 Acesse a pasta `/opt/hadoop` nos Datanodes e execute o comando `ls` para verificar se os arquivos chegaram corretamente.
 
-![Untitled](Datalake/Untitled%2078.png)
+![Untitled](Imagens/Untitled%2078.png)
 
 Fim da instalação do Hadoop, agora, utilizando o Namenode formatei o HDFS
 
@@ -1055,9 +1134,12 @@ Fim da instalação do Hadoop, agora, utilizando o Namenode formatei o HDFS
 hadoop namenode -format
 ```
 
-![Untitled](Datalake/Untitled%2079.png)
+![Untitled](Imagens/Untitled%2079.png)
 
-- **Inicialização do Hadoop**
+<br>
+
+<a name = "InicializacaoHadoop"></a>
+<b>Inicialização do Hadoop</b>
 
 Após a formatação do HDFS, iniciarei todos os serviços do Hadoop.
 
@@ -1065,7 +1147,7 @@ Após a formatação do HDFS, iniciarei todos os serviços do Hadoop.
 $HADOOP_HOME/sbin/start-all.sh
 ```
 
-![Untitled](Datalake/Untitled%2080.png)
+![Untitled](Imagens/Untitled%2080.png)
 
 Verificando através do terminal se os serviços foram iniciados corretamente nas máquinas.
 
@@ -1073,11 +1155,11 @@ Verificando através do terminal se os serviços foram iniciados corretamente na
 jps
 ```
 
-![Untitled](Datalake/Untitled%2081.png)
+![Untitled](Imagens/Untitled%2081.png)
 
-![Untitled](Datalake/Untitled%2082.png)
+![Untitled](Imagens/Untitled%2082.png)
 
-![Untitled](Datalake/Untitled%2083.png)
+![Untitled](Imagens/Untitled%2083.png)
 
 Importando um arquivo teste e listando ele no HDFS
 
@@ -1086,7 +1168,7 @@ hdfs dfs -put alexandre.txt /
 hdfs dfs -ls /
 ```
 
-![Untitled](Datalake/Untitled%2084.png)
+![Untitled](Imagens/Untitled%2084.png)
 
 Acessando a interface web do Hadoop utilizando meu IP do Namenode com a porta `9870`
 
@@ -1094,7 +1176,7 @@ Acessando a interface web do Hadoop utilizando meu IP do Namenode com a porta `9
 http://192.168.1.16:9870/
 ```
 
-![Untitled](Datalake/Untitled%2085.png)
+![Untitled](Imagens/Untitled%2085.png)
 
 Verificando o funcionamento dos Datanodes
 
@@ -1102,7 +1184,7 @@ Verificando o funcionamento dos Datanodes
 http://192.168.1.16:9870/dfshealth.html#tab-datanode
 ```
 
-![Untitled](Datalake/Untitled%2086.png)
+![Untitled](Imagens/Untitled%2086.png)
 
 Verificando visualmente os arquivos dentro do HDFS
 
@@ -1110,7 +1192,7 @@ Verificando visualmente os arquivos dentro do HDFS
 http://192.168.1.16:9870/explorer.html#/
 ```
 
-![Untitled](Datalake/Untitled%2087.png)
+![Untitled](Imagens/Untitled%2087.png)
 
 Verificação do funcionamento do Yarn
 
@@ -1118,7 +1200,7 @@ Verificação do funcionamento do Yarn
 http://192.168.1.16:8088/cluster
 ```
 
-![Untitled](Datalake/Untitled%2088.png)
+![Untitled](Imagens/Untitled%2088.png)
 
 Tudo funcionando corretamente, irei desligar o Hadoop.
 
@@ -1126,13 +1208,12 @@ Tudo funcionando corretamente, irei desligar o Hadoop.
 $HADOOP_HOME/sbin/stop-all.sh
 ```
 
-![Untitled](Datalake/Untitled%2089.png)
+![Untitled](Imagens/Untitled%2089.png)
 
+<br>
 
-
----
-
-- Instalação e configuração do Apache Kafka
+<a name = "Kafka"></a>
+### Instalação e configuração do Apache Kafka
 
 <aside>
 💡 Para a instalação do Kafka, certifique que todas as máquinas estejam iniciadas e com o Java JDK instalado.
@@ -1143,7 +1224,7 @@ Primeiro passo é fazer o Download do arquivo binário do Kafka:
 
 [https://kafka.apache.org/downloads](https://kafka.apache.org/downloads)
 
-![Untitled](Datalake/Untitled%2090.png)
+![Untitled](Imagens/Untitled%2090.png)
 
 Copie o link de download do binário:
 
@@ -1155,7 +1236,7 @@ Conectado ao Namenode, no diretório `/opt/`, faça o Download do binário
 sudo wget https://downloads.apache.org/kafka/3.3.1/kafka_2.13-3.3.1.tgz
 ```
 
-![Untitled](Datalake/Untitled%2091.png)
+![Untitled](Imagens/Untitled%2091.png)
 
 Após finalizar o Download, é necessário descompactá-lo, remover o arquivo compactado, alterar o nome e dono do arquivo.
 
@@ -1165,7 +1246,7 @@ sudo rm -rf kafka_2.13-3.3.1.tgz
 sudo mv kafka_2.13-3.3.1/ /opt/kafka
 ```
 
-![Untitled](Datalake/Untitled%2092.png)
+![Untitled](Imagens/Untitled%2092.png)
 
 Adotando novamente outro padrão, estarei colocando no usuário datalake todas as instalações dos componentes Apache.
 
@@ -1173,7 +1254,7 @@ Adotando novamente outro padrão, estarei colocando no usuário datalake todas a
 sudo chown -R datalake:datalake kafka/
 ```
 
-![Untitled](Datalake/Untitled%2093.png)
+![Untitled](Imagens/Untitled%2093.png)
 
 Configurando as variáveis de ambiente no arquivo `~/.bash_profile`
 
@@ -1182,7 +1263,7 @@ export KAFKA_HOME=/opt/kafka
 export PATH=$PATH:$KAFKA_HOME/bin
 ```
 
-![Untitled](Datalake/Untitled%2094.png)
+![Untitled](Imagens/Untitled%2094.png)
 
 No diretório `/opt/kafka/config` faça a cópia do arquivo `server.properties`
 
@@ -1217,7 +1298,7 @@ O primeiro passo para testar é iniciar o Zookeeper pelo diretório `/opt/kafka`
 bin/zookeeper-server-start.sh config/zookeeper.properties
 ```
 
-![Zookeeper inicializado com sucesso!](Datalake/Untitled%2095.png)
+![Zookeeper inicializado com sucesso!](Imagens/Untitled%2095.png)
 
 Zookeeper inicializado com sucesso!
 
@@ -1233,15 +1314,15 @@ Verifique se a porta inicializada foi a inicializada de acordo com a configuraç
 
 Inicialização com o arquivo `server.properties`
 
-![Untitled](Datalake/Untitled%2096.png)
+![Untitled](Imagens/Untitled%2096.png)
 
 Inicialização com o arquivo `server1.properties`
 
-![Untitled](Datalake/Untitled%2097.png)
+![Untitled](Imagens/Untitled%2097.png)
 
 Inicialização com o arquivo `server2.properties`
 
-![Untitled](Datalake/Untitled%2098.png)
+![Untitled](Imagens/Untitled%2098.png)
 
 Abra uma nova sessão no terminal e crie um tópico Kafka.
 
@@ -1249,7 +1330,7 @@ Abra uma nova sessão no terminal e crie um tópico Kafka.
 bin/kafka-topics.sh --create --topic BrokersTres --bootstrap-server localhost:9092 --replication-factor 3 --partitions 1
 ```
 
-![Untitled](Datalake/Untitled%2099.png)
+![Untitled](Imagens/Untitled%2099.png)
 
 Rode o comando abaixo para descrever o status do tópico criado.
 
@@ -1257,7 +1338,7 @@ Rode o comando abaixo para descrever o status do tópico criado.
 bin/kafka-topics.sh --describe --topic BrokersTres --bootstrap-server localhost:9092
 ```
 
-![Untitled](Datalake/Untitled%20100.png)
+![Untitled](Imagens/Untitled%20100.png)
 
 Inicialize o producer apontando o tópico criado.
 
@@ -1265,7 +1346,7 @@ Inicialize o producer apontando o tópico criado.
 bin/kafka-console-producer.sh --topic BrokersTres --bootstrap-server localhost:9092
 ```
 
-![Producer inicializado.](Datalake/Untitled%20101.png)
+![Producer inicializado.](Imagens/Untitled%20101.png)
 
 Producer inicializado.
 
@@ -1277,11 +1358,11 @@ bin/kafka-console-consumer.sh --topic BrokersTres --from-beginning --bootstrap-s
 
 Escreva mensagens no producer.
 
-![Untitled](Datalake/Untitled%20102.png)
+![Untitled](Imagens/Untitled%20102.png)
 
 Verifique se chegou corretamente no consumer.
 
-![Untitled](Datalake/Untitled%20103.png)
+![Untitled](Imagens/Untitled%20103.png)
 
 Tudo funcionando! Podemos encerrar todos os serviços.
 
@@ -1292,10 +1373,10 @@ bin/kafka-server-stop.sh config/server1.properties
 bin/kafka-server-stop.sh config/server2.properties
 ```
 
+<br>
 
----
-
-- Instalação e configuração do Apache Nifi
+<a name = "Nifi"></a>
+### Instalação e configuração do Apache Nifi
 
 <aside>
 💡 Para a instalação do Nifi, certifique que as máquinas estejam com Java JDK instalado.
@@ -1306,7 +1387,7 @@ A instalação do Nifi será na máquina local.
 
 Primeiro passo é fazer o Download do arquivo binário do Nifi:
 
-![Untitled](Datalake/Untitled%20104.png)
+![Untitled](Imagens/Untitled%20104.png)
 
 Copie o link de download do binário:
 
@@ -1318,7 +1399,7 @@ Conectado ao Namenode, no diretório `/opt/`, faça o Download do binário
 sudo wget https://dlcdn.apache.org/nifi/1.18.0/nifi-1.18.0-bin.zip
 ```
 
-![Untitled](Datalake/Untitled%20105.png)
+![Untitled](Imagens/Untitled%20105.png)
 
 Após finalizar o Download, é necessário descompactá-lo, remover o arquivo compactado, alterar o nome e dono do arquivo.
 
@@ -1346,7 +1427,7 @@ Iniciando o Apache Nifi
 $NIFI_HOME/bin/nifi.sh start
 ```
 
-![Untitled](Datalake/Untitled%20106.png)
+![Untitled](Imagens/Untitled%20106.png)
 
 Crie um usuário no Nifi
 
@@ -1362,9 +1443,9 @@ https://localhost:8443/nifi/login
 
 Utilize o login criado.
 
-![Untitled](Datalake/Untitled%20107.png)
+![Untitled](Imagens/Untitled%20107.png)
 
-![Untitled](Datalake/Untitled%20108.png)
+![Untitled](Imagens/Untitled%20108.png)
 
 Desligue o Nifi
 
@@ -1374,10 +1455,10 @@ $NIFI_HOME/bin/nifi.sh stop
 
 Instalação do Nifi concluída.
 
+<br>
 
----
-
-- Instalação e configuração do Apache Spark
+<a name = "Spark"></a>
+### Instalação e configuração do Apache Spark
 
 <aside>
 💡 Para a instalação do Spark, certifique que todas as máquinas estejam iniciadas e com o Java JDK instalado.
@@ -1388,13 +1469,13 @@ Primeiro passo é fazer o Download do arquivo binário do Spark:
 
 [https://spark.apache.org/downloads.html](https://spark.apache.org/downloads.html)
 
-![Untitled](Datalake/Untitled%20109.png)
+![Untitled](Imagens/Untitled%20109.png)
 
 Copie o link de Download do binário:
 
 [https://dlcdn.apache.org/spark/spark-3.3.1/spark-3.3.1-bin-hadoop3.tgz](https://dlcdn.apache.org/spark/spark-3.3.1/spark-3.3.1-bin-hadoop3.tgz)
 
-![Untitled](Datalake/Untitled%20110.png)
+![Untitled](Imagens/Untitled%20110.png)
 
 Abra o terminal do Namenode, vá ao diretório `/opt/` e insira o comando `wget` com o link binário do Spark:
 
@@ -1407,7 +1488,7 @@ Abra o terminal do Namenode, vá ao diretório `/opt/` e insira o comando `wget`
 sudo wget https://dlcdn.apache.org/spark/spark-3.3.1/spark-3.3.1-bin-hadoop3.tgz
 ```
 
-![Untitled](Datalake/Untitled%20111.png)
+![Untitled](Imagens/Untitled%20111.png)
 
 Verificando, extraindo, removendo o arquivo compactado e alterando o nome do diretório.
 
@@ -1418,7 +1499,7 @@ sudo rm -rf spark-3.3.1-bin-hadoop3.tgz
 sudo mv spark-3.3.1-bin-hadoop3/ /opt/spark
 ```
 
-![Untitled](Datalake/Untitled%20112.png)
+![Untitled](Imagens/Untitled%20112.png)
 
 Adotando novamente outro padrão, estarei colocando no usuário datalake todas as instalações dos componentes Apache.
 
@@ -1426,7 +1507,7 @@ Adotando novamente outro padrão, estarei colocando no usuário datalake todas a
 sudo chown -R datalake:datalake spark/
 ```
 
-![Untitled](Datalake/Untitled%20113.png)
+![Untitled](Imagens/Untitled%20113.png)
 
 Agora irei configurar as variáveis de ambiente do meu usuário datalake inserindo as seguintes configurações:
 
@@ -1435,7 +1516,7 @@ export SPARK_HOME=/opt/spark
 export PATH=$PATH:$SPARK_HOME/bin
 ```
 
-![Untitled](Datalake/Untitled%20114.png)
+![Untitled](Imagens/Untitled%20114.png)
 
 Testando seu funcionamento.
 
@@ -1443,11 +1524,12 @@ Testando seu funcionamento.
 spark-shell
 ```
 
-![Untitled](Datalake/Untitled%20115.png)
+![Untitled](Imagens/Untitled%20115.png)
 
 Utilize o atalho `CTRL+C` para fechar o `spark-shell`
 
-- **Configurando o Spark em Multinode Cluster**
+<a name = "Cluster"></a>
+<b>Configurando o Spark em Multinode Cluster</b>
 
 Entre no diretório `/opt/spark/conf` e faça uma cópia renomeada sem .template dos arquivos `spark-env.sh.template` e `workers.template`
 
@@ -1458,7 +1540,7 @@ cp workers.template workers
 
 Edite o arquivo `workers` e insira o IP dos Datanodes:
 
-![Untitled](Datalake/Untitled%20116.png)
+![Untitled](Imagens/Untitled%20116.png)
 
 Edite o arquivo `spark-env.sh` e insira
 
@@ -1467,7 +1549,7 @@ export SPARK_MASTER_HOST=namenode
 export JAVA_HOME=/opt/jdk
 ```
 
-![Untitled](Datalake/Untitled%20117.png)
+![Untitled](Imagens/Untitled%20117.png)
 
 Para iniciar o Spark é necessário primeiro instalar-lo também nas outras máquinas, estarei fazendo a cópia do Namenode para os Datanodes.
 
@@ -1478,7 +1560,7 @@ sudo mkdir /opt/spark
 sudo chown -R datalake:datalake /opt/spark/
 ```
 
-![Untitled](Datalake/Untitled%20118.png)
+![Untitled](Imagens/Untitled%20118.png)
 
 Faça a cópia do Namenode para os Datanodes.
 
@@ -1489,7 +1571,7 @@ scp -rv -i "~/.ssh/id_rsa" /opt/spark datalake@datanode2:/opt
 
 Verifique se chegou corretamente nos Datanodes.
 
-![Untitled](Datalake/Untitled%20119.png)
+![Untitled](Imagens/Untitled%20119.png)
 
 Agora podemos rodar o Multinode pelo Namenode
 
@@ -1497,7 +1579,7 @@ Agora podemos rodar o Multinode pelo Namenode
 $SPARK_HOME/sbin/start-all.sh
 ```
 
-![Untitled](Datalake/Untitled%20120.png)
+![Untitled](Imagens/Untitled%20120.png)
 
 Verificando em todas as máquinas se os serviços foram iniciados corretamente
 
@@ -1507,15 +1589,15 @@ jps
 
 Namenode
 
-![Untitled](Datalake/Untitled%20121.png)
+![Untitled](Imagens/Untitled%20121.png)
 
 Datanode1
 
-![Untitled](Datalake/Untitled%20122.png)
+![Untitled](Imagens/Untitled%20122.png)
 
 Datanode2
 
-![Untitled](Datalake/Untitled%20123.png)
+![Untitled](Imagens/Untitled%20123.png)
 
 Inicie o `spark-shell`
 
@@ -1523,7 +1605,7 @@ Inicie o `spark-shell`
 spark-shell --master spark://namenode:7077
 ```
 
-![Untitled](Datalake/Untitled%20124.png)
+![Untitled](Imagens/Untitled%20124.png)
 
 Utilize o atalho `CTRL+C` para fechar o `spark-shell`
 
@@ -1533,7 +1615,7 @@ Verifique se todos os Datanodes estão sincronizados.
 http://192.168.1.9:4040
 ```
 
-![Untitled](Datalake/Untitled%20125.png)
+![Untitled](Imagens/Untitled%20125.png)
 
 Também é possível verificar através do endereço:
 
@@ -1541,7 +1623,7 @@ Também é possível verificar através do endereço:
 http://192.168.1.9:8080/
 ```
 
-![Untitled](Datalake/Untitled%20126.png)
+![Untitled](Imagens/Untitled%20126.png)
 
 Parando todos os serviços
 
@@ -1551,11 +1633,10 @@ $SPARK_HOME/sbin/stop-all.sh
 
 Instalação do Spark concluída.
 
+<br>
 
-
----
-
-- Instalação e configuração do Apache Hive
+<a name = "Hive"></a>
+### Instalação e configuração do Apache Hive
 
 <aside>
 💡 Para a instalação do Hive, certifique que todas as máquinas estejam iniciadas e com o Java JDK instalado.
@@ -1566,13 +1647,13 @@ Primeiro passo é fazer o Download do arquivo binário do Hive:
 
 [https://dlcdn.apache.org/hive/](https://dlcdn.apache.org/hive/)
 
-![Untitled](Datalake/Untitled%20127.png)
+![Untitled](Imagens/Untitled%20127.png)
 
 Escolha a versão e copie o link de Download do binário:
 
 [https://dlcdn.apache.org/hive/hive-3.1.3/apache-hive-3.1.3-bin.tar.gz](https://dlcdn.apache.org/hive/hive-3.1.3/apache-hive-3.1.3-bin.tar.gz)
 
-![Untitled](Datalake/Untitled%20128.png)
+![Untitled](Imagens/Untitled%20128.png)
 
 Abra o terminal do Namenode, vá ao diretório `/opt/` e insira o comando `wget` com o link binário do Hive:
 
@@ -1585,7 +1666,7 @@ Abra o terminal do Namenode, vá ao diretório `/opt/` e insira o comando `wget`
 sudo wget https://dlcdn.apache.org/hive/hive-3.1.3/apache-hive-3.1.3-bin.tar.gz
 ```
 
-![Untitled](Datalake/Untitled%20129.png)
+![Untitled](Imagens/Untitled%20129.png)
 
 Verificando, extraindo, removendo o arquivo compactado e alterando o nome do diretório.
 
@@ -1596,7 +1677,7 @@ sudo rm -rf apache-hive-3.1.3-bin.tar.gz
 sudo mv apache-hive-3.1.3-bin/ /opt/hive
 ```
 
-![Untitled](Datalake/Untitled%20130.png)
+![Untitled](Imagens/Untitled%20130.png)
 
 Estarei colocando no usuário datalake todas as instalações dos componentes Apache.
 
@@ -1604,7 +1685,7 @@ Estarei colocando no usuário datalake todas as instalações dos componentes Ap
 sudo chown -R datalake:datalake hive/
 ```
 
-![Untitled](Datalake/Untitled%20131.png)
+![Untitled](Imagens/Untitled%20131.png)
 
 Exportando as variáveis de ambiente:
 
@@ -1613,7 +1694,7 @@ export HIVE_HOME=/opt/hive
 export PATH=$PATH:$HIVE_HOME/bin
 ```
 
-![Untitled](Datalake/Untitled%20132.png)
+![Untitled](Imagens/Untitled%20132.png)
 
 Verifique a versão do Hive
 
@@ -1621,17 +1702,20 @@ Verifique a versão do Hive
 hive --version
 ```
 
-![Untitled](Datalake/Untitled%20133.png)
+![Untitled](Imagens/Untitled%20133.png)
 
 Antes de inicializar é necessário ter um banco de dados relacional para armazenar o Metastore do Hive.
 
-- **Configuração do Metastore com Banco de Dados Oracle**
+<br>
+
+<a name = "Oracle"></a>
+<b>Configuração do Metastore com Banco de Dados Oracle</b>
 
 É necessário o Download do conector JDBC do Oracle.
 
 [https://www.oracle.com/br/database/technologies/appdev/jdbc-downloads.html](https://www.oracle.com/br/database/technologies/appdev/jdbc-downloads.html)
 
-![Untitled](Datalake/Untitled%20134.png)
+![Untitled](Imagens/Untitled%20134.png)
 
 Copie o link e faça o Download no diretório `/opt/hive/lib/`
 
@@ -1639,7 +1723,7 @@ Copie o link e faça o Download no diretório `/opt/hive/lib/`
 sudo wget https://download.oracle.com/otn-pub/otn_software/jdbc/217/ojdbc8.jar
 ```
 
-![Untitled](Datalake/Untitled%20135.png)
+![Untitled](Imagens/Untitled%20135.png)
 
 Altere o dono e grupo do arquivo para datalake
 
@@ -1653,25 +1737,25 @@ Antes de qualquer passo é necessário iniciar o HDFS.
 $HADOOP_HOME/sbin/start-dfs.sh
 ```
 
-![Untitled](Datalake/Untitled%20136.png)
+![Untitled](Imagens/Untitled%20136.png)
 
 Iniciando o banco de dados Oracle
 
-![Untitled](Datalake/Untitled%20137.png)
+![Untitled](Imagens/Untitled%20137.png)
 
 Utilizarei o SQL Developer para se conectar ao Oracle
 
 Se conectando ao usuário sys
 
-![Untitled](Datalake/Untitled%20138.png)
+![Untitled](Imagens/Untitled%20138.png)
 
 Criando um usuário no banco de dados e dando privilégios:
 
-![Untitled](Datalake/Untitled%20139.png)
+![Untitled](Imagens/Untitled%20139.png)
 
 Testando a conexão
 
-![Untitled](Datalake/Untitled%20140.png)
+![Untitled](Imagens/Untitled%20140.png)
 
 Agora rode o script que é disponibilizado pelo Hive no diretório 
 
@@ -1681,7 +1765,7 @@ Agora rode o script que é disponibilizado pelo Hive no diretório
 
 Copie o conteúdo dentro do arquivo `hive-schema-3.1.0.oracle.sql` e rode no SQL Developer.
 
-![Untitled](Datalake/Untitled%20141.png)
+![Untitled](Imagens/Untitled%20141.png)
 
 Agora é necessário configurar o Hive para se conectar com o banco Oracle
 
@@ -1714,7 +1798,7 @@ Dentro do arquivo insira as configurações.
 </configuration>
 ```
 
-![Untitled](Datalake/Untitled%20142.png)
+![Untitled](Imagens/Untitled%20142.png)
 
 Rode o comando para criar o schema:
 
@@ -1734,17 +1818,19 @@ Agora é só rodar o comando Hive.
 
 </aside>
 
-![Untitled](Datalake/Untitled%20143.png)
+![Untitled](Imagens/Untitled%20143.png)
 
 Instalação concluída.
 
-- **Configuração do Metastore com Banco de Dados MySQL**
+<br>
+<a name = "MySQL"></a>
+<b>Configuração do Metastore com Banco de Dados MySQL</b>
 
 Baixar o conector JDBC do MySQL
 
 [https://dev.mysql.com/downloads/connector/j/](https://dev.mysql.com/downloads/connector/j/)
 
-![Untitled](Datalake/Untitled%20144.png)
+![Untitled](Imagens/Untitled%20144.png)
 
 Utilize o comando wget para baixar no diretório `/opt/hive/lib`
 
@@ -1752,7 +1838,7 @@ Utilize o comando wget para baixar no diretório `/opt/hive/lib`
 sudo wget https://dev.mysql.com/get/Downloads/Connector-J/mysql-connector-j-8.0.31.zip
 ```
 
-![Untitled](Datalake/Untitled%20145.png)
+![Untitled](Imagens/Untitled%20145.png)
 
 Após baixar é hora de extrair:
 
@@ -1760,7 +1846,7 @@ Após baixar é hora de extrair:
 sudo unzip mysql-connector-j-8.0.31.zip
 ```
 
-![Untitled](Datalake/Untitled%20146.png)
+![Untitled](Imagens/Untitled%20146.png)
 
 Removendo o arquivo baixado.
 
@@ -1794,13 +1880,13 @@ Inicie o MySQL
 mysql -u root -p
 ```
 
-![Untitled](Datalake/Untitled%20147.png)
+![Untitled](Imagens/Untitled%20147.png)
 
 ```sql
 CREATE DATABASE METASTORE;
 ```
 
-![Untitled](Datalake/Untitled%20148.png)
+![Untitled](Imagens/Untitled%20148.png)
 
 Entre no banco criado.
 
@@ -1808,7 +1894,7 @@ Entre no banco criado.
 USE METASTORE;
 ```
 
-![Untitled](Datalake/Untitled%20149.png)
+![Untitled](Imagens/Untitled%20149.png)
 
 Agora crie o schema do Hive
 
@@ -1816,7 +1902,7 @@ Agora crie o schema do Hive
 source /opt/hive/scripts/metastore/upgrade/mysql/hive-schema-3.1.0.mysql.sql
 ```
 
-![Untitled](Datalake/Untitled%20150.png)
+![Untitled](Imagens/Untitled%20150.png)
 
 Criação de um usuário para a conexão do Hive.
 
@@ -1824,7 +1910,7 @@ Criação de um usuário para a conexão do Hive.
 CREATE USER 'hive' IDENTIFIED BY 'eYsfh$99N6';
 ```
 
-![Untitled](Datalake/Untitled%20151.png)
+![Untitled](Imagens/Untitled%20151.png)
 
 Concessão de privilégios para o usuário `hive`
 
@@ -1833,7 +1919,7 @@ GRANT ALL PRIVILEGES ON *.* TO hive;
 flush privileges;
 ```
 
-![Untitled](Datalake/Untitled%20152.png)
+![Untitled](Imagens/Untitled%20152.png)
 
 Agora é hora de configurar o Hive.
 
@@ -1867,7 +1953,7 @@ $HADOOP_HOME/sbin/start-dfs.sh
 $HADOOP_HOME/sbin/yarn-dfs.sh
 ```
 
-![Untitled](Datalake/Untitled%20153.png)
+![Untitled](Imagens/Untitled%20153.png)
 
 Antes de rodar o hive é necessário tirar o HDFS do modo Safe:
 
@@ -1881,16 +1967,17 @@ Rode o comando para iniciar o schema criado no MySQL.
 schematool -dbType mysql -initSchema
 ```
 
-![Untitled](Datalake/Untitled%20154.png)
+![Untitled](Imagens/Untitled%20154.png)
 
 Agora rodamos o comando `Hive`
 
-![Untitled](Datalake/Untitled%20155.png)
+![Untitled](Imagens/Untitled%20155.png)
 
 Concluído a instalação
 
-
-- **Testando o Hive**
+<br>
+<a name = "HiveTest"></a>
+<b>Testando o Hive</b>
 
 Para testar o Hive primeiramente irei criar uma tabela nele.
 
@@ -1898,7 +1985,7 @@ Para testar o Hive primeiramente irei criar uma tabela nele.
 CREATE TABLE datalake (COL1 INT);
 ```
 
-![Untitled](Datalake/Untitled%20156.png)
+![Untitled](Imagens/Untitled%20156.png)
 
 Verificando o Metastore pelo banco de dados MySQL. 
 
@@ -1907,13 +1994,13 @@ USE METASTORE;
 SELECT * FROM TBLS;
 ```
 
-![Untitled](Datalake/Untitled%20157.png)
+![Untitled](Imagens/Untitled%20157.png)
 
 Metastore da tabela Hive (Datalake) criada com sucesso!
 
 Para esse teste vou incluir arquivos `.csv` no meu HDFS. Estarei utilizando como base um arquivo `.csv` da minha autoria e o repartir em 3 arquivos.
 
-![Untitled](Datalake/Untitled%20158.png)
+![Untitled](Imagens/Untitled%20158.png)
 
 Criando a pasta cliente e movendo os arquivos `.csv` para dentro dela.
 
@@ -1925,7 +2012,7 @@ hdfs dfs -mv /cliente3.csv /cliente
 hdfs dfs -ls /cliente
 ```
 
-![Untitled](Datalake/Untitled%20159.png)
+![Untitled](Imagens/Untitled%20159.png)
 
 Estruturando arquivos `.csv` para rodar no Hive.
 
@@ -1948,7 +2035,7 @@ FIELDS TERMINATED BY ','
 location '/cliente/';
 ```
 
-![Untitled](Datalake/Untitled%20160.png)
+![Untitled](Imagens/Untitled%20160.png)
 
 Executando uma query
 
@@ -1956,7 +2043,7 @@ Executando uma query
 SELECT * FROM CLIENTE;
 ```
 
-![Untitled](Datalake/Untitled%20161.png)
+![Untitled](Imagens/Untitled%20161.png)
 
 Concluído o teste com o Hive!
 
@@ -1969,6 +2056,3 @@ Link para o download das 3 VMS com todas as máquinas já configuradas:<br/>
 [Datanode1](https://drive.google.com/file/d/1fn7T5Uj0oq8kOxIRWwCQBj7NLmxcerhl/view)<br/>
 
 [Datanode2](https://drive.google.com/file/d/1L7h5wPItRQrJplu9TPQphhLXLvJ7Fys3/view)<br/>
-
----
-
