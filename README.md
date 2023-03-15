@@ -3,6 +3,7 @@
     + [Links](#Links)
         + [Link para o projeto no Notion](#Notion)
         + [Link para o projeto no Site](#Site)
+    + [Arquitetura do Projeto](#Arquitetura-do-projeto)
     + [Preparando as máquinas](#Arquitetura-do-projeto)
         + [Criação do Namenode](#Namenode)
         + [Criação do Datanode](#Datanode)
