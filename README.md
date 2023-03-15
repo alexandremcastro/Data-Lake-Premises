@@ -1,5 +1,5 @@
 Link para o projeto no 
-[Notion](https://castroiwnl.notion.site/castroiwnl/Data-Lake-On-Premises-9845115c23374331a7a65c658fe3eeb1)
+[Notion](https://alexandremcastro.notion.site/12-2022-Data-Lake-On-Premises-9845115c23374331a7a65c658fe3eeb1)
 
 Link para o projeto no
 [Site](https://alexandre-castro.vercel.app/blog/datalake-premises)
