@@ -4,7 +4,7 @@
         + [Link para o projeto no Notion](#Notion)
         + [Link para o projeto no Site](#Site)
     + [Arquitetura do Projeto](#Arquitetura-do-projeto)
-    + [Preparando as máquinas](#Arquitetura-do-projeto)
+    + [Preparando as máquinas](#Maquinas)
         + [Criação do Namenode](#Namenode)
         + [Criação do Datanode](#Datanode)
     + [Instalação do Linux (CentOS)](#CentOS)
@@ -57,6 +57,7 @@ Essa será a arquitetura a ser seguida no projeto:
 
 <br>
 
+### Links <a name = "Maquinas"></a>
 ### Preparando as máquinas
 
 Antes de qualquer passo, para este projeto, estarei utilizando o Virtualbox da Oracle para a virtualização das máquinas, mas não é obrigatório a utilização deste, podendo ser qualquer outro virtualizador, desde de que seja possível a configuração de rede das máquinas.
