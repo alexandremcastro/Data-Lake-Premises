@@ -57,7 +57,7 @@ Essa será a arquitetura a ser seguida no projeto:
 
 <br>
 
-### Links <a name = "Maquinas"></a>
+<a name = "Maquinas"></a>
 ### Preparando as máquinas
 
 Antes de qualquer passo, para este projeto, estarei utilizando o Virtualbox da Oracle para a virtualização das máquinas, mas não é obrigatório a utilização deste, podendo ser qualquer outro virtualizador, desde de que seja possível a configuração de rede das máquinas.
