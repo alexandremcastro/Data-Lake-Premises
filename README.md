@@ -74,28 +74,21 @@ Este projeto experimental é o produto de minhas experiências com Data Lake, on
 ## Links <a name = "Links"></a>
 **Projeto:**
 * [Projeto no Site](https://alexandre-castro.vercel.app/blog/datalake-premises)
-
 * [Projeto no Notion](https://alexandremcastro.notion.site/12-2022-Data-Lake-On-Premises-9845115c23374331a7a65c658fe3eeb1)
-
 * [Projeto no GitLab](https://gitlab.com/alexandremcastro/Data-Lake-Premises)
-
 * [Projeto no GitHub](https://github.com/alexandremcastro/Data-Lake-Premises)
 
 **Downloads:**
-
 * [Download do Namenode](https://drive.google.com/file/d/1NrVKQ5mOb87hJMWtXDEWQa_Fg3f8GavX/view)<br/>
-
 * [Download do Datanode1](https://drive.google.com/file/d/1fn7T5Uj0oq8kOxIRWwCQBj7NLmxcerhl/view)<br/>
-
 * [Download do Datanode2](https://drive.google.com/file/d/1L7h5wPItRQrJplu9TPQphhLXLvJ7Fys3/view)<br/>
 
 **Artigos orientadores:**
-
 * [O que é um data lake? - AWS](https://aws.amazon.com/pt/big-data/datalakes-and-analytics/what-is-a-data-lake/)<br/>
-
 * [Os 4 Estágios Para Construir um Data Lake de Forma Eficiente - DSA](https://blog.dsacademy.com.br/os-4-estagios-para-construir-um-data-lake-de-forma-eficiente/)<br/>
-
 * [Saiba mais sobre Data Lakes baseados em Hadoop - Oracle](https://docs.oracle.com/pt-br/solutions/hadoop-data-lake/index.html)<br/>
+* [Você precisa de um data lake? - Google](https://cloud.google.com/learn/what-is-a-data-lake?hl=pt-br#section-3)<br/>
+
 
 ## Conclusão
 O objetivo final do Data Lake é ajudar as empresas a tomar decisões mais informadas e estratégicas, melhorando a eficiência dos negócios e aumentando a competitividade no mercado. Além disso, o Data Lake também pode ser usado para suportar outras iniciativas, como a conformidade regulatória, a governança de dados e a segurança da informação.
