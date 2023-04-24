@@ -46,7 +46,7 @@ Este projeto experimental é o produto de minhas experiências com Data Lake, on
 
 ## Requisitos para o projeto
 
-> **Nota**: Este projeto foi concluído em dezembro de 2022, e é importante ressaltar que alguns dos requisitos abordados podem sofrer alterações ao longo do tempo. Como em qualquer área de tecnologia, novas soluções e tecnologias surgem constantemente, o que pode tornar algumas das abordagens e soluções apresentadas neste projeto desatualizadas em algum momento.
+> **📝 Nota**: Este projeto foi concluído em dezembro de 2022, e é importante ressaltar que alguns dos requisitos abordados podem sofrer alterações ao longo do tempo. Como em qualquer área de tecnologia, novas soluções e tecnologias surgem constantemente, o que pode tornar algumas das abordagens e soluções apresentadas neste projeto desatualizadas em algum momento.
 
 <b>Hardware:</b> Ao menos 8GB de memória RAM.
 
@@ -76,9 +76,9 @@ Este projeto experimental é o produto de minhas experiências com Data Lake, on
 
 * [Projeto no Notion](https://alexandremcastro.notion.site/12-2022-Data-Lake-On-Premises-9845115c23374331a7a65c658fe3eeb1)
 
-* [Projeto no GitLab](https://alexandremcastro.notion.site/12-2022-Data-Lake-On-Premises-9845115c23374331a7a65c658fe3eeb1)
+* [Projeto no GitLab](https://gitlab.com/alexandremcastro/Data-Lake-Premises)
 
-* [Projeto no GitHub](https://alexandremcastro.notion.site/12-2022-Data-Lake-On-Premises-9845115c23374331a7a65c658fe3eeb1)
+* [Projeto no GitHub](https://github.com/alexandremcastro/Data-Lake-Premises)
 
 * [Download do Namenode](https://drive.google.com/file/d/1NrVKQ5mOb87hJMWtXDEWQa_Fg3f8GavX/view)<br/>
 
