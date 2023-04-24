@@ -22,10 +22,7 @@ Segue o modelo de criação das diferentes máquinas:
 <a name = "Namenode"></a>
 <b>Criação do Namenode</b>
 
-<aside>
-💡 É obrigatório a criação do Namenode, por mais que um dia não vá utilizar nenhum Datanode.
-
-</aside>
+> **💡**: É obrigatório a criação do Namenode, por mais que um dia não vá utilizar nenhum Datanode.
 
 Escolha um nome para a sua máquina que será o Namenode, seguindo essas configurações de tipo e versão, pois estaremos utilizando o CentOS como sistema operacional.
 
@@ -63,10 +60,7 @@ Selecione a opção:
 
 - Dinamicamente alocado
 
-<aside>
-💡 Importante que o disco seja dinamicamente alocado para não ocupar todo o espaço reservado em sua máquina física.
-
-</aside>
+> **💡**: Importante que o disco seja dinamicamente alocado para não ocupar todo o espaço reservado em sua máquina física.
 
 - Próximo (N) >
 
@@ -109,7 +103,8 @@ Para sua criação, seguiremos praticamente os mesmos passos da criação do Nam
 A primeira alteração será no nome da máquina, neste caso será o Datanode1
 
 <aside>
-💡 Estarei utilizando 2 Datanodes para a formação do meu datalake, mas não é obrigatório possuir Datanodes, ou apenas 2 Datanodes. Podem ser criados infinitos Datanodes, desde que você tenha capacidade computacional para isso.
+
+> **💡**: Estarei utilizando 2 Datanodes para a formação do meu datalake, mas não é obrigatório possuir Datanodes, ou apenas 2 Datanodes. Podem ser criados infinitos Datanodes, desde que você tenha capacidade computacional para isso.
 
 </aside>
 
@@ -118,5 +113,3 @@ A primeira alteração será no nome da máquina, neste caso será o Datanode1
 A segunda alteração será na quantidade de memória, alocarei apenas **2GB**, porque como citei na criação do Namenode, os Datanodes podem ter menos poder computacional.
 
 ![Untitled](/Imagens/Untitled%209.png)
-
-<br>

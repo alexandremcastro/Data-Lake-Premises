@@ -19,11 +19,7 @@ Selecione a opção:
 
 - x86_64
 
-<br>
-<aside>
-💡 Também é possível escolher outras versões caso a x86_64 não seja compatível com seu virtualizador ou máquina.
-</aside>
-<br>
+> **💡**: Também é possível escolher outras versões caso a x86_64 não seja compatível com seu virtualizador ou máquina.
 
 ![Untitled](/Imagens/Untitled%2010.png)
 
@@ -46,10 +42,7 @@ Após realizar o Download é hora de instalar o CentOS nas máquinas que foram c
 
 Abra o Virtual Box, clique no Namenode.
 
-<aside>
-💡 Máquina criada na etapa anterior.
-
-</aside>
+> **💡**: Máquina criada na etapa anterior.
 
 Selecione a opção:
 

@@ -14,11 +14,7 @@ Para começar a configurar as máquinas, estarei me conectando através do SSH d
 
 Como a minha máquina principal também é Linux, eu consigo diretamente pelo terminal utilizar o comando SSH para me conectar nas máquinas, para isso, antes é necessário ligar o Namenode e os Datanodes, no meu caso 2 Datanodes.
 
-<aside>
-💡 Para usuários de Windows:
-Se você tentar se conectar pelo PowerShell do Windows, você não conseguirá, para solucionar isso baixe o Putty e faça a conexão diretamente dele.
-
-</aside>
+> **💡**: Para usuários de Windows: Se você tentar se conectar pelo PowerShell do Windows, você não conseguirá, para solucionar isso baixe o Putty e faça a conexão diretamente dele.
 
 Abra o Virtual Box
 
@@ -63,11 +59,8 @@ Namenode: 192.168.1.16
 Datanode1: 192.168.1.14
 Datanode2: 192.168.1.15
 ```
-<br>
-<aside>
-💡 Vale ressaltar que esses IP’s não serão necessariamente iguais aos meus (mesmo podendo ser também), por isso é importante anotar eles.
-</aside>
-<br>
+
+> **💡**: Vale ressaltar que esses IP’s não serão necessariamente iguais aos meus (mesmo podendo ser também), por isso é importante anotar eles.
 
 Após as coletas, abra o Terminal da sua máquina local e insira o comando:
 
@@ -81,18 +74,11 @@ Depois aparecerá este aviso:
 
 Digite `yes`. Depois será solicitado a senha do usuário, digite ela e estará conectado.
 
-<aside>
-💡 Usuário criado na instalação do CentOS
-
-</aside>
+> **💡**: Usuário criado na instalação do CentOS
 
 Conectando com a minha máquina no Namenode:
 
-<aside>
-💡 Para usuários de Windows: 
-É hora de usar o Putty e fazer a conexão via SSH.
-
-</aside>
+> **💡**: Para usuários de Windows: Momento de usar o Putty e fazer a conexão via SSH.
 
 ```bash
 ssh datalake@192.168.1.16
@@ -127,10 +113,7 @@ Agora, estamos oficialmente 100% prontos para as configurações do Linux.
 <a name = "Sudoers"></a>
 <b> Configuração do Sudoers </b>
 
-<aside>
-💡 É necessário realizar esse passo para todas as máquinas.
-
-</aside>
+> **💡**: É necessário realizar esse passo para todas as máquinas.
 
 Para poder realizar os comandos de Root no usuário datalake, é necessário configurar o arquivo sudoers. 
 
@@ -165,10 +148,7 @@ exit
 <a name = "Atualizacao"></a>
 <b> Atualizando o sistema</b>
 
-<aside>
-💡 É necessário realizar esse passo para todas as máquinas.
-
-</aside>
+> **💡**: É necessário realizar esse passo para todas as máquinas.
 
 Após a configuração do arquivo `sudoers` e acesso do Linux com o usuário datalake vou verificar se possui atualizações e se sim, realizar elas.
 
@@ -223,9 +203,7 @@ Caso o ping esteja retornando os milissegundos entre as conexões, significa que
 
 Para habilitar a conexão via SSH entre máquinas é necessário configurar o arquivo sshd_config, nele estão as configurações de conexão do SSH.
 
-<aside>
-💡 É necessário realizar todos passos seguintes em todas as máquinas.
-</aside>
+> **💡**: É necessário realizar esse passo para todas as máquinas.
 
 Para editar este arquivo, rodamos o comando:
 
@@ -261,10 +239,7 @@ Após a configuração do arquivo hosts e arquivo sshd, agora é hora de configu
 
 A configuração da chave SSH fará com que as máquinas se comuniquem sem precisarem de senhas no momento em que algo for feito entre as máquinas.
 
-<aside>
-💡 É necessário realizar todos passos seguintes apenas no Namenode
-
-</aside>
+> **💡**: É necessário realizar todos passos seguintes apenas no Namenode.
 
 Para gerar a chave de SSH, precisamos estar em nosso Namenode e rodar o comando:
 
@@ -274,10 +249,7 @@ ssh-keygen
 
 Caso queira fazer alguma modificação na chave, você tem essa opção, no meu caso vou deixar tudo como padrão, seguindo apertando ‘Enter’ para gerar a chave.
 
-<aside>
-💡 Vale ressaltar que essa chave foi criada no usuário datalake, cada chave é gerada em cada usuário. Caso tente ver essa chave em outro usuário da mesma máquina, não conseguirá.
-
-</aside>
+> **💡**: Vale ressaltar que essa chave foi criada no usuário datalake, cada chave é gerada em cada usuário. Caso tente ver essa chave em outro usuário da mesma máquina, não conseguirá.
 
 ![Untitled](/Imagens/Untitled%2047.png)
 
@@ -320,17 +292,11 @@ ssh-copy-id -i ~/.ssh/id_rsa datalake@datanode2
 
 Será solicitado a confirmação da conexão, só responder com `yes` e também será solicitado a senha do usuário.
 
-<aside>
-💡 Só foi possível utilizar o nome do host Datanode1 por conta da configuração do arquivos hosts, caso o arquivos hosts não estivesse configurado, o nome do host poderia ser substituído pelo IP do host.
-
-</aside>
+> **💡**: Só foi possível utilizar o nome do host Datanode1 por conta da configuração do arquivos hosts, caso o arquivos hosts não estivesse configurado, o nome do host poderia ser substituído pelo IP do host.
 
 Repita esse comando para todos os Datanodes.
 
-<aside>
-💡 Cópia da chave para o Datanode2
-
-</aside>
+> **💡**: Cópia da chave para o Datanode2.
 
 ![Untitled](/Imagens/Untitled%2050.png)
 
@@ -352,5 +318,3 @@ exit
 ```
 
 Chave configurada, tudo oficialmente pronto para o início da instalação do Hadoop.
-
-<br>

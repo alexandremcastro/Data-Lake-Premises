@@ -18,11 +18,7 @@
 
 Maior parte das aplicações da Apache roda sobre o Java, para isso devemos instalar o Java JDK, estarei utilizando a versão 8 porque é compatível com maior parte dos componentes, por mais que a versão do Hadoop atual suporte o Java 11.
  
-
-<aside>
-💡 Certifique-se de que todas as máquinas estão ligadas.
-
-</aside>
+> **💡**: Certifique-se de que todas as máquinas estão ligadas.
 
 <b>Download do Java 8</b>
 
@@ -36,10 +32,7 @@ Baixe a opção na sua máquina local:
 
 - jdk-8u202-linux-x64.tar.gz
 
-<aside>
-💡 Estarei selecionando essa opção, mas não é obrigatório, baixe a compatível com a sua máquina.
-
-</aside>
+> **💡**: Estarei selecionando essa opção, mas não é obrigatório, baixe a compatível com a sua máquina.
 
 ![Untitled](/Imagens/Untitled%2052.png)
 
@@ -79,10 +72,7 @@ Após a execução, verifique se a cópia realmente foi feita. Acesse o diretór
 
 Após verificar estamos preparados para instalar o Java.
 
-<aside>
-💡 É necessário realizar todos passos seguintes em todas as máquinas.
-
-</aside>
+> **💡**: É necessário realizar todos passos seguintes em todas as máquinas.
 
 ### Instalação do Java 8 
 
@@ -169,10 +159,7 @@ Copie o link de Download
 
 Abra o terminal do Namenode, vá ao diretório `/opt/` e insira o comando `wget` com o link do Hadoop:
 
-<aside>
-💡 Só será possível a execução do comando wget, caso você tenha ele instalado.
-
-</aside>
+> **💡**: Só será possível a execução do comando wget, caso você tenha ele instalado.
 
 ```bash
 sudo wget https://dlcdn.apache.org/hadoop/common/hadoop-3.3.4/hadoop-3.3.4.tar.gz
@@ -240,10 +227,7 @@ Configurando o arquivo `core-site.xml`
 
 Apague as tags `configuration`.
 
-<aside>
-💡 Muito cuidado apagando este tipo de arquivo para não apagar as indentações.
-
-</aside>
+> **💡**: Muito cuidado apagando este tipo de arquivo para não apagar as indentações.
 
 ![Untitled](/Imagens/Untitled%2069.png)
 
@@ -376,10 +360,7 @@ Insira as seguintes configurações:
 
 Por último a configuração do arquivo `workers`, nele serão inseridos os Datanodes que farão comunicação com o Namenode. Insira o nome dos Datanodes.
 
-<aside>
-💡 Esses nomes são das máquinas configuradas no arquivo `hosts`.
-
-</aside>
+> **💡**: Esses nomes são das máquinas configuradas no arquivo ==hosts==.
 
 ![Untitled](/Imagens/Untitled%2074.png)
 
@@ -397,10 +378,7 @@ Farei a cópia do diretório do Hadoop no Namenode, para os Datanodes.
 
 Para fazer a copiar do Hadoop para os Datanodes, é essencial que seja criado a pasta dele antes de receber a cópia do diretório.
 
-<aside>
-💡 Faça isso para todos os Datanodes.
-
-</aside>
+> **💡**: Faça isso para todos os Datanodes.
 
 ```bash
 sudo mkdir /opt/hadoop 
@@ -518,10 +496,7 @@ $HADOOP_HOME/sbin/stop-all.sh
 <a name = "Kafka"></a>
 ### Instalação e configuração do Apache Kafka
 
-<aside>
-💡 Para a instalação do Kafka, certifique que todas as máquinas estejam iniciadas e com o Java JDK instalado.
-
-</aside>
+> **💡**: Para a instalação do Kafka, certifique que todas as máquinas estejam iniciadas e com o Java JDK instalado.
 
 Primeiro passo é fazer o Download do arquivo binário do Kafka:
 
@@ -681,10 +656,7 @@ bin/kafka-server-stop.sh config/server2.properties
 <a name = "Nifi"></a>
 ### Instalação e configuração do Apache Nifi
 
-<aside>
-💡 Para a instalação do Nifi, certifique que as máquinas estejam com Java JDK instalado.
-
-</aside>
+> **💡**: Para a instalação do Nifi, certifique que as máquinas estejam com Java JDK instalado.
 
 A instalação do Nifi será na máquina local.
 
@@ -721,10 +693,7 @@ export PATH=$PATH:$NIFI_HOME/bin
 
 Iniciando o Apache Nifi
 
-<aside>
-💡 Só irá rodar se você tiver o Java instalado em sua máquina local.
-
-</aside>
+> **💡**: Só irá rodar se você tiver o Java instalado em sua máquina local.
 
 ```bash
 $NIFI_HOME/bin/nifi.sh start
@@ -763,10 +732,7 @@ Instalação do Nifi concluída.
 <a name = "Spark"></a>
 ### Instalação e configuração do Apache Spark
 
-<aside>
-💡 Para a instalação do Spark, certifique que todas as máquinas estejam iniciadas e com o Java JDK instalado.
-
-</aside>
+> **💡**: Para a instalação do Spark, certifique que todas as máquinas estejam iniciadas e com o Java JDK instalado.
 
 Primeiro passo é fazer o Download do arquivo binário do Spark:
 
@@ -782,10 +748,7 @@ Copie o link de Download do binário:
 
 Abra o terminal do Namenode, vá ao diretório `/opt/` e insira o comando `wget` com o link binário do Spark:
 
-<aside>
-💡 Só será possível a execução do comando `wget`, caso você tenha ele instalado.
-
-</aside>
+> **💡**: Só será possível a execução do comando ==wget==, caso você tenha ele instalado.
 
 ```bash
 sudo wget https://dlcdn.apache.org/spark/spark-3.3.1/spark-3.3.1-bin-hadoop3.tgz
@@ -941,10 +904,7 @@ Instalação do Spark concluída.
 <a name = "Hive"></a>
 ### Instalação e configuração do Apache Hive
 
-<aside>
-💡 Para a instalação do Hive, certifique que todas as máquinas estejam iniciadas e com o Java JDK instalado.
-
-</aside>
+> **💡**: Para a instalação do Hive, certifique que todas as máquinas estejam iniciadas e com o Java JDK instalado.
 
 Primeiro passo é fazer o Download do arquivo binário do Hive:
 
@@ -960,10 +920,7 @@ Escolha a versão e copie o link de Download do binário:
 
 Abra o terminal do Namenode, vá ao diretório `/opt/` e insira o comando `wget` com o link binário do Hive:
 
-<aside>
-💡 Só será possível a execução do comando `wget`, caso você tenha ele instalado.
-
-</aside>
+> **💡**: Só será possível a execução do comando ==wget==, caso você tenha ele instalado.
 
 ```bash
 sudo wget https://dlcdn.apache.org/hive/hive-3.1.3/apache-hive-3.1.3-bin.tar.gz
@@ -1105,10 +1062,7 @@ Dentro do arquivo insira as configurações.
 
 Rode o comando para criar o schema:
 
-<aside>
-💡 Para funcionar corretamente é necessário configurar o arquivo `tnsnames.ora` do banco de dados Oracle.
-
-</aside>
+> **💡**: Para funcionar corretamente é necessário configurar o arquivo ==tnsnames.ora== do banco de dados Oracle.
 
 ```bash
 /opt/hive/bin/schematool -dbType oracle -initSchema
@@ -1116,10 +1070,7 @@ Rode o comando para criar o schema:
 
 Agora é só rodar o comando Hive.
 
-<aside>
-💡 O comando `hive` só vai funcionar se as variáveis de ambiente estiverem configuradas corretamente.
-
-</aside>
+> **💡**: O comando ==hive== só vai funcionar se as variáveis de ambiente estiverem configuradas corretamente.
 
 ![Untitled](/Imagens/Untitled%20143.png)
 
