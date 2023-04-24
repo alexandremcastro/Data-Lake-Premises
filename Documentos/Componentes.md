@@ -41,13 +41,13 @@ Baixe a opção na sua máquina local:
 
 </aside>
 
-![Untitled](Imagens/Untitled%2052.png)
+![Untitled](/Imagens/Untitled%2052.png)
 
 Será solicitado o login, caso não tenha, faça um cadastro no site da Oracle.
 
 [https://profile.oracle.com/myprofile/account/create-account.jspx](https://profile.oracle.com/myprofile/account/create-account.jspx)
 
-![Untitled](Imagens/Untitled%2053.png)
+![Untitled](/Imagens/Untitled%2053.png)
 
 Após o login o Download será iniciado automaticamente.
 
@@ -63,7 +63,7 @@ Abra o terminal da sua máquina local, onde foi baixado o Java e execute o coman
 scp /caminho/jdk-8u202-linux-x64.tar.gz root@ipdonamenode:/opt
 ```
 
-![Untitled](Imagens/Untitled%2054.png)
+![Untitled](/Imagens/Untitled%2054.png)
 
 Faça a cópia do Java para os Datanodes também
 
@@ -71,11 +71,11 @@ Faça a cópia do Java para os Datanodes também
 scp /caminho/jdk-8u202-linux-x64.tar.gz root@ipdodatanode:/opt
 ```
 
-![Untitled](Imagens/Untitled%2055.png)
+![Untitled](/Imagens/Untitled%2055.png)
 
 Após a execução, verifique se a cópia realmente foi feita. Acesse o diretório `/opt/` das máquinas e execute o comando `ls -la` para verificar se o arquivo foi realmente copiado
 
-![Untitled](Imagens/Untitled%2056.png)
+![Untitled](/Imagens/Untitled%2056.png)
 
 Após verificar estamos preparados para instalar o Java.
 
@@ -100,7 +100,7 @@ Verificando se foi extraído corretamente:
 ls -la
 ```
 
-![Untitled](Imagens/Untitled%2057.png)
+![Untitled](/Imagens/Untitled%2057.png)
 
 Agora irei apagar o arquivo compactado, renomear o diretório criado para JDK e alterar o dono e grupo, seguindo uma boa prática de padronização.
 
@@ -111,7 +111,7 @@ ls -la
 sudo chown -R root:root jdk/
 ```
 
-![Untitled](Imagens/Untitled%2058.png)
+![Untitled](/Imagens/Untitled%2058.png)
 
 Para dar continuidade a instalação, precisa configurar as variáveis de ambiente, para isso edite o arquivo `.bash_profile`, localizado no `~/`
 
@@ -123,7 +123,7 @@ export JRE_HOME=/opt/jdk/jre
 export PATH=$PATH:$JAVA_HOME/bin:$JRE_HOME/bin
 ```
 
-![Untitled](Imagens/Untitled%2059.png)
+![Untitled](/Imagens/Untitled%2059.png)
 
 Para atualizar o arquivo de variáveis de ambiente rode o comando:
 
@@ -137,7 +137,7 @@ Para verificar se tudo está configurado corretamente, rode o comando
 java -version
 ```
 
-![Caso apareça a versão, significa que tudo está corretamente configurado.](Imagens/Untitled%2060.png)
+![Caso apareça a versão, significa que tudo está corretamente configurado.](/Imagens/Untitled%2060.png)
 
 Caso apareça a versão, significa que tudo está corretamente configurado.
 
@@ -159,13 +159,13 @@ Primeiro passo é fazer o Download do arquivo binário do Hadoop 3.3.4:
 
 [https://hadoop.apache.org/releases.html](https://hadoop.apache.org/releases.html)
 
-![Untitled](Imagens/Untitled%2061.png)
+![Untitled](/Imagens/Untitled%2061.png)
 
 Copie o link de Download
 
 [https://dlcdn.apache.org/hadoop/common/hadoop-3.3.4/hadoop-3.3.4.tar.gz](https://dlcdn.apache.org/hadoop/common/hadoop-3.3.4/hadoop-3.3.4.tar.gz)
 
-![Untitled](Imagens/Untitled%2062.png)
+![Untitled](/Imagens/Untitled%2062.png)
 
 Abra o terminal do Namenode, vá ao diretório `/opt/` e insira o comando `wget` com o link do Hadoop:
 
@@ -178,7 +178,7 @@ Abra o terminal do Namenode, vá ao diretório `/opt/` e insira o comando `wget`
 sudo wget https://dlcdn.apache.org/hadoop/common/hadoop-3.3.4/hadoop-3.3.4.tar.gz
 ```
 
-![Untitled](Imagens/Untitled%2063.png)
+![Untitled](/Imagens/Untitled%2063.png)
 
 Verificando, extraindo, removendo o arquivo compactado e alterando o nome do diretório.
 
@@ -189,7 +189,7 @@ sudo rm -rf hadoop-3.3.4.tar.gz
 sudo mv hadoop-3.3.4/ /opt/hadoop
 ```
 
-![Untitled](Imagens/Untitled%2064.png)
+![Untitled](/Imagens/Untitled%2064.png)
 
 Adotando novamente outro padrão, estarei colocando no usuário datalake todas as instalações dos componentes Apache.
 
@@ -197,7 +197,7 @@ Adotando novamente outro padrão, estarei colocando no usuário datalake todas a
 sudo chown -R datalake:datalake hadoop/
 ```
 
-![Untitled](Imagens/Untitled%2065.png)
+![Untitled](/Imagens/Untitled%2065.png)
 
 Agora irei configurar as variáveis de ambiente do meu usuário datalake inserindo as seguintes configurações:
 
@@ -207,7 +207,7 @@ export HADOOP_CONF_DIR="${HADOOP_HOME}/etc/hadoop"
 export PATH=$PATH:$HADOOP_HOME/bin
 ```
 
-![Untitled](Imagens/Untitled%2066.png)
+![Untitled](/Imagens/Untitled%2066.png)
 
 Agora podemos testar a versão do Hadoop, caso as variáveis de ambiente tenham sido corretamente configuradas.
 
@@ -215,7 +215,7 @@ Agora podemos testar a versão do Hadoop, caso as variáveis de ambiente tenham 
 hadoop version
 ```
 
-![Untitled](Imagens/Untitled%2067.png)
+![Untitled](/Imagens/Untitled%2067.png)
 
 <br>
 
@@ -234,7 +234,7 @@ export PATH="${PATH}:${HADOOP_HOME}/bin"
 export HADOOP_SSH_OPTS="-i ~/.ssh/id_rsa"
 ```
 
-![Untitled](Imagens/Untitled%2068.png)
+![Untitled](/Imagens/Untitled%2068.png)
 
 Configurando o arquivo `core-site.xml`
 
@@ -245,7 +245,7 @@ Apague as tags `configuration`.
 
 </aside>
 
-![Untitled](Imagens/Untitled%2069.png)
+![Untitled](/Imagens/Untitled%2069.png)
 
 Insira as seguintes configurações:
 
@@ -258,7 +258,7 @@ Insira as seguintes configurações:
 </configuration>
 ```
 
-![Untitled](Imagens/Untitled%2070.png)
+![Untitled](/Imagens/Untitled%2070.png)
 
 Configurando o `hdfs-site.xml`
 
@@ -281,7 +281,7 @@ Insira as seguintes configurações:
 </configuration>
 ```
 
-![Untitled](Imagens/Untitled%2071.png)
+![Untitled](/Imagens/Untitled%2071.png)
 
 Configurando o `mapred-site.xml`
 
@@ -316,7 +316,7 @@ Insira as seguintes configurações:
 </configuration>
 ```
 
-![Untitled](Imagens/Untitled%2072.png)
+![Untitled](/Imagens/Untitled%2072.png)
 
 Configurando o `yarn-site.xml`
 
@@ -372,7 +372,7 @@ Insira as seguintes configurações:
 </configuration>
 ```
 
-![Untitled](Imagens/Untitled%2073.png)
+![Untitled](/Imagens/Untitled%2073.png)
 
 Por último a configuração do arquivo `workers`, nele serão inseridos os Datanodes que farão comunicação com o Namenode. Insira o nome dos Datanodes.
 
@@ -381,7 +381,7 @@ Por último a configuração do arquivo `workers`, nele serão inseridos os Data
 
 </aside>
 
-![Untitled](Imagens/Untitled%2074.png)
+![Untitled](/Imagens/Untitled%2074.png)
 
 Configuração finalizada, mas antes de rodar o Hadoop, precisamos criar os diretórios onde serão salvo os logs e registros do HDFS, para isso executei os comandos:
 
@@ -406,7 +406,7 @@ Para fazer a copiar do Hadoop para os Datanodes, é essencial que seja criado a 
 sudo mkdir /opt/hadoop 
 ```
 
-![Untitled](Imagens/Untitled%2075.png)
+![Untitled](/Imagens/Untitled%2075.png)
 
 Caso esteja usando o padrão que estou seguindo, é importante alterar o dono e o grupo do diretório para datalake, igualmente feito no Namenode.
 
@@ -414,7 +414,7 @@ Caso esteja usando o padrão que estou seguindo, é importante alterar o dono e 
 sudo chown -R datalake:datalake hadoop/
 ```
 
-![Untitled](Imagens/Untitled%2076.png)
+![Untitled](/Imagens/Untitled%2076.png)
 
 Agora posso fazer a cópia do diretório Hadoop configurado no Namenode para os Datanodes, utilizando a chave de segurança SSH.
 
@@ -425,11 +425,11 @@ scp -rv -i "~/.ssh/id_rsa" /opt/hadoop datalake@datanode2:/opt
 
 Ao terminar a cópia aparecerá essa tela:
 
-![Untitled](Imagens/Untitled%2077.png)
+![Untitled](/Imagens/Untitled%2077.png)
 
 Acesse a pasta `/opt/hadoop` nos Datanodes e execute o comando `ls` para verificar se os arquivos chegaram corretamente.
 
-![Untitled](Imagens/Untitled%2078.png)
+![Untitled](/Imagens/Untitled%2078.png)
 
 Fim da instalação do Hadoop, agora, utilizando o Namenode formatei o HDFS
 
@@ -437,7 +437,7 @@ Fim da instalação do Hadoop, agora, utilizando o Namenode formatei o HDFS
 hadoop namenode -format
 ```
 
-![Untitled](Imagens/Untitled%2079.png)
+![Untitled](/Imagens/Untitled%2079.png)
 
 <br>
 
@@ -450,7 +450,7 @@ Após a formatação do HDFS, iniciarei todos os serviços do Hadoop.
 $HADOOP_HOME/sbin/start-all.sh
 ```
 
-![Untitled](Imagens/Untitled%2080.png)
+![Untitled](/Imagens/Untitled%2080.png)
 
 Verificando através do terminal se os serviços foram iniciados corretamente nas máquinas.
 
@@ -458,11 +458,11 @@ Verificando através do terminal se os serviços foram iniciados corretamente na
 jps
 ```
 
-![Untitled](Imagens/Untitled%2081.png)
+![Untitled](/Imagens/Untitled%2081.png)
 
-![Untitled](Imagens/Untitled%2082.png)
+![Untitled](/Imagens/Untitled%2082.png)
 
-![Untitled](Imagens/Untitled%2083.png)
+![Untitled](/Imagens/Untitled%2083.png)
 
 Importando um arquivo teste e listando ele no HDFS
 
@@ -471,7 +471,7 @@ hdfs dfs -put alexandre.txt /
 hdfs dfs -ls /
 ```
 
-![Untitled](Imagens/Untitled%2084.png)
+![Untitled](/Imagens/Untitled%2084.png)
 
 Acessando a interface web do Hadoop utilizando meu IP do Namenode com a porta `9870`
 
@@ -479,7 +479,7 @@ Acessando a interface web do Hadoop utilizando meu IP do Namenode com a porta `9
 http://192.168.1.16:9870/
 ```
 
-![Untitled](Imagens/Untitled%2085.png)
+![Untitled](/Imagens/Untitled%2085.png)
 
 Verificando o funcionamento dos Datanodes
 
@@ -487,7 +487,7 @@ Verificando o funcionamento dos Datanodes
 http://192.168.1.16:9870/dfshealth.html#tab-datanode
 ```
 
-![Untitled](Imagens/Untitled%2086.png)
+![Untitled](/Imagens/Untitled%2086.png)
 
 Verificando visualmente os arquivos dentro do HDFS
 
@@ -495,7 +495,7 @@ Verificando visualmente os arquivos dentro do HDFS
 http://192.168.1.16:9870/explorer.html#/
 ```
 
-![Untitled](Imagens/Untitled%2087.png)
+![Untitled](/Imagens/Untitled%2087.png)
 
 Verificação do funcionamento do Yarn
 
@@ -503,7 +503,7 @@ Verificação do funcionamento do Yarn
 http://192.168.1.16:8088/cluster
 ```
 
-![Untitled](Imagens/Untitled%2088.png)
+![Untitled](/Imagens/Untitled%2088.png)
 
 Tudo funcionando corretamente, irei desligar o Hadoop.
 
@@ -511,7 +511,7 @@ Tudo funcionando corretamente, irei desligar o Hadoop.
 $HADOOP_HOME/sbin/stop-all.sh
 ```
 
-![Untitled](Imagens/Untitled%2089.png)
+![Untitled](/Imagens/Untitled%2089.png)
 
 <br>
 
@@ -527,7 +527,7 @@ Primeiro passo é fazer o Download do arquivo binário do Kafka:
 
 [https://kafka.apache.org/downloads](https://kafka.apache.org/downloads)
 
-![Untitled](Imagens/Untitled%2090.png)
+![Untitled](/Imagens/Untitled%2090.png)
 
 Copie o link de download do binário:
 
@@ -539,7 +539,7 @@ Conectado ao Namenode, no diretório `/opt/`, faça o Download do binário
 sudo wget https://downloads.apache.org/kafka/3.3.1/kafka_2.13-3.3.1.tgz
 ```
 
-![Untitled](Imagens/Untitled%2091.png)
+![Untitled](/Imagens/Untitled%2091.png)
 
 Após finalizar o Download, é necessário descompactá-lo, remover o arquivo compactado, alterar o nome e dono do arquivo.
 
@@ -549,7 +549,7 @@ sudo rm -rf kafka_2.13-3.3.1.tgz
 sudo mv kafka_2.13-3.3.1/ /opt/kafka
 ```
 
-![Untitled](Imagens/Untitled%2092.png)
+![Untitled](/Imagens/Untitled%2092.png)
 
 Adotando novamente outro padrão, estarei colocando no usuário datalake todas as instalações dos componentes Apache.
 
@@ -557,7 +557,7 @@ Adotando novamente outro padrão, estarei colocando no usuário datalake todas a
 sudo chown -R datalake:datalake kafka/
 ```
 
-![Untitled](Imagens/Untitled%2093.png)
+![Untitled](/Imagens/Untitled%2093.png)
 
 Configurando as variáveis de ambiente no arquivo `~/.bash_profile`
 
@@ -566,7 +566,7 @@ export KAFKA_HOME=/opt/kafka
 export PATH=$PATH:$KAFKA_HOME/bin
 ```
 
-![Untitled](Imagens/Untitled%2094.png)
+![Untitled](/Imagens/Untitled%2094.png)
 
 No diretório `/opt/kafka/config` faça a cópia do arquivo `server.properties`
 
@@ -601,7 +601,7 @@ O primeiro passo para testar é iniciar o Zookeeper pelo diretório `/opt/kafka`
 bin/zookeeper-server-start.sh config/zookeeper.properties
 ```
 
-![Zookeeper inicializado com sucesso!](Imagens/Untitled%2095.png)
+![Zookeeper inicializado com sucesso!](/Imagens/Untitled%2095.png)
 
 Zookeeper inicializado com sucesso!
 
@@ -617,15 +617,15 @@ Verifique se a porta inicializada foi a inicializada de acordo com a configuraç
 
 Inicialização com o arquivo `server.properties`
 
-![Untitled](Imagens/Untitled%2096.png)
+![Untitled](/Imagens/Untitled%2096.png)
 
 Inicialização com o arquivo `server1.properties`
 
-![Untitled](Imagens/Untitled%2097.png)
+![Untitled](/Imagens/Untitled%2097.png)
 
 Inicialização com o arquivo `server2.properties`
 
-![Untitled](Imagens/Untitled%2098.png)
+![Untitled](/Imagens/Untitled%2098.png)
 
 Abra uma nova sessão no terminal e crie um tópico Kafka.
 
@@ -633,7 +633,7 @@ Abra uma nova sessão no terminal e crie um tópico Kafka.
 bin/kafka-topics.sh --create --topic BrokersTres --bootstrap-server localhost:9092 --replication-factor 3 --partitions 1
 ```
 
-![Untitled](Imagens/Untitled%2099.png)
+![Untitled](/Imagens/Untitled%2099.png)
 
 Rode o comando abaixo para descrever o status do tópico criado.
 
@@ -641,7 +641,7 @@ Rode o comando abaixo para descrever o status do tópico criado.
 bin/kafka-topics.sh --describe --topic BrokersTres --bootstrap-server localhost:9092
 ```
 
-![Untitled](Imagens/Untitled%20100.png)
+![Untitled](/Imagens/Untitled%20100.png)
 
 Inicialize o producer apontando o tópico criado.
 
@@ -649,7 +649,7 @@ Inicialize o producer apontando o tópico criado.
 bin/kafka-console-producer.sh --topic BrokersTres --bootstrap-server localhost:9092
 ```
 
-![Producer inicializado.](Imagens/Untitled%20101.png)
+![Producer inicializado.](/Imagens/Untitled%20101.png)
 
 Producer inicializado.
 
@@ -661,11 +661,11 @@ bin/kafka-console-consumer.sh --topic BrokersTres --from-beginning --bootstrap-s
 
 Escreva mensagens no producer.
 
-![Untitled](Imagens/Untitled%20102.png)
+![Untitled](/Imagens/Untitled%20102.png)
 
 Verifique se chegou corretamente no consumer.
 
-![Untitled](Imagens/Untitled%20103.png)
+![Untitled](/Imagens/Untitled%20103.png)
 
 Tudo funcionando! Podemos encerrar todos os serviços.
 
@@ -690,7 +690,7 @@ A instalação do Nifi será na máquina local.
 
 Primeiro passo é fazer o Download do arquivo binário do Nifi:
 
-![Untitled](Imagens/Untitled%20104.png)
+![Untitled](/Imagens/Untitled%20104.png)
 
 Copie o link de download do binário:
 
@@ -702,7 +702,7 @@ Conectado ao Namenode, no diretório `/opt/`, faça o Download do binário
 sudo wget https://dlcdn.apache.org/nifi/1.18.0/nifi-1.18.0-bin.zip
 ```
 
-![Untitled](Imagens/Untitled%20105.png)
+![Untitled](/Imagens/Untitled%20105.png)
 
 Após finalizar o Download, é necessário descompactá-lo, remover o arquivo compactado, alterar o nome e dono do arquivo.
 
@@ -730,7 +730,7 @@ Iniciando o Apache Nifi
 $NIFI_HOME/bin/nifi.sh start
 ```
 
-![Untitled](Imagens/Untitled%20106.png)
+![Untitled](/Imagens/Untitled%20106.png)
 
 Crie um usuário no Nifi
 
@@ -746,9 +746,9 @@ https://localhost:8443/nifi/login
 
 Utilize o login criado.
 
-![Untitled](Imagens/Untitled%20107.png)
+![Untitled](/Imagens/Untitled%20107.png)
 
-![Untitled](Imagens/Untitled%20108.png)
+![Untitled](/Imagens/Untitled%20108.png)
 
 Desligue o Nifi
 
@@ -772,13 +772,13 @@ Primeiro passo é fazer o Download do arquivo binário do Spark:
 
 [https://spark.apache.org/downloads.html](https://spark.apache.org/downloads.html)
 
-![Untitled](Imagens/Untitled%20109.png)
+![Untitled](/Imagens/Untitled%20109.png)
 
 Copie o link de Download do binário:
 
 [https://dlcdn.apache.org/spark/spark-3.3.1/spark-3.3.1-bin-hadoop3.tgz](https://dlcdn.apache.org/spark/spark-3.3.1/spark-3.3.1-bin-hadoop3.tgz)
 
-![Untitled](Imagens/Untitled%20110.png)
+![Untitled](/Imagens/Untitled%20110.png)
 
 Abra o terminal do Namenode, vá ao diretório `/opt/` e insira o comando `wget` com o link binário do Spark:
 
@@ -791,7 +791,7 @@ Abra o terminal do Namenode, vá ao diretório `/opt/` e insira o comando `wget`
 sudo wget https://dlcdn.apache.org/spark/spark-3.3.1/spark-3.3.1-bin-hadoop3.tgz
 ```
 
-![Untitled](Imagens/Untitled%20111.png)
+![Untitled](/Imagens/Untitled%20111.png)
 
 Verificando, extraindo, removendo o arquivo compactado e alterando o nome do diretório.
 
@@ -802,7 +802,7 @@ sudo rm -rf spark-3.3.1-bin-hadoop3.tgz
 sudo mv spark-3.3.1-bin-hadoop3/ /opt/spark
 ```
 
-![Untitled](Imagens/Untitled%20112.png)
+![Untitled](/Imagens/Untitled%20112.png)
 
 Adotando novamente outro padrão, estarei colocando no usuário datalake todas as instalações dos componentes Apache.
 
@@ -810,7 +810,7 @@ Adotando novamente outro padrão, estarei colocando no usuário datalake todas a
 sudo chown -R datalake:datalake spark/
 ```
 
-![Untitled](Imagens/Untitled%20113.png)
+![Untitled](/Imagens/Untitled%20113.png)
 
 Agora irei configurar as variáveis de ambiente do meu usuário datalake inserindo as seguintes configurações:
 
@@ -819,7 +819,7 @@ export SPARK_HOME=/opt/spark
 export PATH=$PATH:$SPARK_HOME/bin
 ```
 
-![Untitled](Imagens/Untitled%20114.png)
+![Untitled](/Imagens/Untitled%20114.png)
 
 Testando seu funcionamento.
 
@@ -827,7 +827,7 @@ Testando seu funcionamento.
 spark-shell
 ```
 
-![Untitled](Imagens/Untitled%20115.png)
+![Untitled](/Imagens/Untitled%20115.png)
 
 Utilize o atalho `CTRL+C` para fechar o `spark-shell`
 
@@ -843,7 +843,7 @@ cp workers.template workers
 
 Edite o arquivo `workers` e insira o IP dos Datanodes:
 
-![Untitled](Imagens/Untitled%20116.png)
+![Untitled](/Imagens/Untitled%20116.png)
 
 Edite o arquivo `spark-env.sh` e insira
 
@@ -852,7 +852,7 @@ export SPARK_MASTER_HOST=namenode
 export JAVA_HOME=/opt/jdk
 ```
 
-![Untitled](Imagens/Untitled%20117.png)
+![Untitled](/Imagens/Untitled%20117.png)
 
 Para iniciar o Spark é necessário primeiro instalar-lo também nas outras máquinas, estarei fazendo a cópia do Namenode para os Datanodes.
 
@@ -863,7 +863,7 @@ sudo mkdir /opt/spark
 sudo chown -R datalake:datalake /opt/spark/
 ```
 
-![Untitled](Imagens/Untitled%20118.png)
+![Untitled](/Imagens/Untitled%20118.png)
 
 Faça a cópia do Namenode para os Datanodes.
 
@@ -874,7 +874,7 @@ scp -rv -i "~/.ssh/id_rsa" /opt/spark datalake@datanode2:/opt
 
 Verifique se chegou corretamente nos Datanodes.
 
-![Untitled](Imagens/Untitled%20119.png)
+![Untitled](/Imagens/Untitled%20119.png)
 
 Agora podemos rodar o Multinode pelo Namenode
 
@@ -882,7 +882,7 @@ Agora podemos rodar o Multinode pelo Namenode
 $SPARK_HOME/sbin/start-all.sh
 ```
 
-![Untitled](Imagens/Untitled%20120.png)
+![Untitled](/Imagens/Untitled%20120.png)
 
 Verificando em todas as máquinas se os serviços foram iniciados corretamente
 
@@ -892,15 +892,15 @@ jps
 
 Namenode
 
-![Untitled](Imagens/Untitled%20121.png)
+![Untitled](/Imagens/Untitled%20121.png)
 
 Datanode1
 
-![Untitled](Imagens/Untitled%20122.png)
+![Untitled](/Imagens/Untitled%20122.png)
 
 Datanode2
 
-![Untitled](Imagens/Untitled%20123.png)
+![Untitled](/Imagens/Untitled%20123.png)
 
 Inicie o `spark-shell`
 
@@ -908,7 +908,7 @@ Inicie o `spark-shell`
 spark-shell --master spark://namenode:7077
 ```
 
-![Untitled](Imagens/Untitled%20124.png)
+![Untitled](/Imagens/Untitled%20124.png)
 
 Utilize o atalho `CTRL+C` para fechar o `spark-shell`
 
@@ -918,7 +918,7 @@ Verifique se todos os Datanodes estão sincronizados.
 http://192.168.1.9:4040
 ```
 
-![Untitled](Imagens/Untitled%20125.png)
+![Untitled](/Imagens/Untitled%20125.png)
 
 Também é possível verificar através do endereço:
 
@@ -926,7 +926,7 @@ Também é possível verificar através do endereço:
 http://192.168.1.9:8080/
 ```
 
-![Untitled](Imagens/Untitled%20126.png)
+![Untitled](/Imagens/Untitled%20126.png)
 
 Parando todos os serviços
 
@@ -950,13 +950,13 @@ Primeiro passo é fazer o Download do arquivo binário do Hive:
 
 [https://dlcdn.apache.org/hive/](https://dlcdn.apache.org/hive/)
 
-![Untitled](Imagens/Untitled%20127.png)
+![Untitled](/Imagens/Untitled%20127.png)
 
 Escolha a versão e copie o link de Download do binário:
 
 [https://dlcdn.apache.org/hive/hive-3.1.3/apache-hive-3.1.3-bin.tar.gz](https://dlcdn.apache.org/hive/hive-3.1.3/apache-hive-3.1.3-bin.tar.gz)
 
-![Untitled](Imagens/Untitled%20128.png)
+![Untitled](/Imagens/Untitled%20128.png)
 
 Abra o terminal do Namenode, vá ao diretório `/opt/` e insira o comando `wget` com o link binário do Hive:
 
@@ -969,7 +969,7 @@ Abra o terminal do Namenode, vá ao diretório `/opt/` e insira o comando `wget`
 sudo wget https://dlcdn.apache.org/hive/hive-3.1.3/apache-hive-3.1.3-bin.tar.gz
 ```
 
-![Untitled](Imagens/Untitled%20129.png)
+![Untitled](/Imagens/Untitled%20129.png)
 
 Verificando, extraindo, removendo o arquivo compactado e alterando o nome do diretório.
 
@@ -980,7 +980,7 @@ sudo rm -rf apache-hive-3.1.3-bin.tar.gz
 sudo mv apache-hive-3.1.3-bin/ /opt/hive
 ```
 
-![Untitled](Imagens/Untitled%20130.png)
+![Untitled](/Imagens/Untitled%20130.png)
 
 Estarei colocando no usuário datalake todas as instalações dos componentes Apache.
 
@@ -988,7 +988,7 @@ Estarei colocando no usuário datalake todas as instalações dos componentes Ap
 sudo chown -R datalake:datalake hive/
 ```
 
-![Untitled](Imagens/Untitled%20131.png)
+![Untitled](/Imagens/Untitled%20131.png)
 
 Exportando as variáveis de ambiente:
 
@@ -997,7 +997,7 @@ export HIVE_HOME=/opt/hive
 export PATH=$PATH:$HIVE_HOME/bin
 ```
 
-![Untitled](Imagens/Untitled%20132.png)
+![Untitled](/Imagens/Untitled%20132.png)
 
 Verifique a versão do Hive
 
@@ -1005,7 +1005,7 @@ Verifique a versão do Hive
 hive --version
 ```
 
-![Untitled](Imagens/Untitled%20133.png)
+![Untitled](/Imagens/Untitled%20133.png)
 
 Antes de inicializar é necessário ter um banco de dados relacional para armazenar o Metastore do Hive.
 
@@ -1018,7 +1018,7 @@ Antes de inicializar é necessário ter um banco de dados relacional para armaze
 
 [https://www.oracle.com/br/database/technologies/appdev/jdbc-downloads.html](https://www.oracle.com/br/database/technologies/appdev/jdbc-downloads.html)
 
-![Untitled](Imagens/Untitled%20134.png)
+![Untitled](/Imagens/Untitled%20134.png)
 
 Copie o link e faça o Download no diretório `/opt/hive/lib/`
 
@@ -1026,7 +1026,7 @@ Copie o link e faça o Download no diretório `/opt/hive/lib/`
 sudo wget https://download.oracle.com/otn-pub/otn_software/jdbc/217/ojdbc8.jar
 ```
 
-![Untitled](Imagens/Untitled%20135.png)
+![Untitled](/Imagens/Untitled%20135.png)
 
 Altere o dono e grupo do arquivo para datalake
 
@@ -1040,25 +1040,25 @@ Antes de qualquer passo é necessário iniciar o HDFS.
 $HADOOP_HOME/sbin/start-dfs.sh
 ```
 
-![Untitled](Imagens/Untitled%20136.png)
+![Untitled](/Imagens/Untitled%20136.png)
 
 Iniciando o banco de dados Oracle
 
-![Untitled](Imagens/Untitled%20137.png)
+![Untitled](/Imagens/Untitled%20137.png)
 
 Utilizarei o SQL Developer para se conectar ao Oracle
 
 Se conectando ao usuário sys
 
-![Untitled](Imagens/Untitled%20138.png)
+![Untitled](/Imagens/Untitled%20138.png)
 
 Criando um usuário no banco de dados e dando privilégios:
 
-![Untitled](Imagens/Untitled%20139.png)
+![Untitled](/Imagens/Untitled%20139.png)
 
 Testando a conexão
 
-![Untitled](Imagens/Untitled%20140.png)
+![Untitled](/Imagens/Untitled%20140.png)
 
 Agora rode o script que é disponibilizado pelo Hive no diretório 
 
@@ -1068,7 +1068,7 @@ Agora rode o script que é disponibilizado pelo Hive no diretório
 
 Copie o conteúdo dentro do arquivo `hive-schema-3.1.0.oracle.sql` e rode no SQL Developer.
 
-![Untitled](Imagens/Untitled%20141.png)
+![Untitled](/Imagens/Untitled%20141.png)
 
 Agora é necessário configurar o Hive para se conectar com o banco Oracle
 
@@ -1101,7 +1101,7 @@ Dentro do arquivo insira as configurações.
 </configuration>
 ```
 
-![Untitled](Imagens/Untitled%20142.png)
+![Untitled](/Imagens/Untitled%20142.png)
 
 Rode o comando para criar o schema:
 
@@ -1121,7 +1121,7 @@ Agora é só rodar o comando Hive.
 
 </aside>
 
-![Untitled](Imagens/Untitled%20143.png)
+![Untitled](/Imagens/Untitled%20143.png)
 
 Instalação concluída.
 
@@ -1133,7 +1133,7 @@ Baixar o conector JDBC do MySQL
 
 [https://dev.mysql.com/downloads/connector/j/](https://dev.mysql.com/downloads/connector/j/)
 
-![Untitled](Imagens/Untitled%20144.png)
+![Untitled](/Imagens/Untitled%20144.png)
 
 Utilize o comando wget para baixar no diretório `/opt/hive/lib`
 
@@ -1141,7 +1141,7 @@ Utilize o comando wget para baixar no diretório `/opt/hive/lib`
 sudo wget https://dev.mysql.com/get/Downloads/Connector-J/mysql-connector-j-8.0.31.zip
 ```
 
-![Untitled](Imagens/Untitled%20145.png)
+![Untitled](/Imagens/Untitled%20145.png)
 
 Após baixar é hora de extrair:
 
@@ -1149,7 +1149,7 @@ Após baixar é hora de extrair:
 sudo unzip mysql-connector-j-8.0.31.zip
 ```
 
-![Untitled](Imagens/Untitled%20146.png)
+![Untitled](/Imagens/Untitled%20146.png)
 
 Removendo o arquivo baixado.
 
@@ -1183,13 +1183,13 @@ Inicie o MySQL
 mysql -u root -p
 ```
 
-![Untitled](Imagens/Untitled%20147.png)
+![Untitled](/Imagens/Untitled%20147.png)
 
 ```sql
 CREATE DATABASE METASTORE;
 ```
 
-![Untitled](Imagens/Untitled%20148.png)
+![Untitled](/Imagens/Untitled%20148.png)
 
 Entre no banco criado.
 
@@ -1197,7 +1197,7 @@ Entre no banco criado.
 USE METASTORE;
 ```
 
-![Untitled](Imagens/Untitled%20149.png)
+![Untitled](/Imagens/Untitled%20149.png)
 
 Agora crie o schema do Hive
 
@@ -1205,7 +1205,7 @@ Agora crie o schema do Hive
 source /opt/hive/scripts/metastore/upgrade/mysql/hive-schema-3.1.0.mysql.sql
 ```
 
-![Untitled](Imagens/Untitled%20150.png)
+![Untitled](/Imagens/Untitled%20150.png)
 
 Criação de um usuário para a conexão do Hive.
 
@@ -1213,7 +1213,7 @@ Criação de um usuário para a conexão do Hive.
 CREATE USER 'hive' IDENTIFIED BY 'eYsfh$99N6';
 ```
 
-![Untitled](Imagens/Untitled%20151.png)
+![Untitled](/Imagens/Untitled%20151.png)
 
 Concessão de privilégios para o usuário `hive`
 
@@ -1222,7 +1222,7 @@ GRANT ALL PRIVILEGES ON *.* TO hive;
 flush privileges;
 ```
 
-![Untitled](Imagens/Untitled%20152.png)
+![Untitled](/Imagens/Untitled%20152.png)
 
 Agora é hora de configurar o Hive.
 
@@ -1256,7 +1256,7 @@ $HADOOP_HOME/sbin/start-dfs.sh
 $HADOOP_HOME/sbin/yarn-dfs.sh
 ```
 
-![Untitled](Imagens/Untitled%20153.png)
+![Untitled](/Imagens/Untitled%20153.png)
 
 Antes de rodar o hive é necessário tirar o HDFS do modo Safe:
 
@@ -1270,11 +1270,11 @@ Rode o comando para iniciar o schema criado no MySQL.
 schematool -dbType mysql -initSchema
 ```
 
-![Untitled](Imagens/Untitled%20154.png)
+![Untitled](/Imagens/Untitled%20154.png)
 
 Agora rodamos o comando `Hive`
 
-![Untitled](Imagens/Untitled%20155.png)
+![Untitled](/Imagens/Untitled%20155.png)
 
 Concluído a instalação
 
@@ -1288,7 +1288,7 @@ Para testar o Hive primeiramente irei criar uma tabela nele.
 CREATE TABLE datalake (COL1 INT);
 ```
 
-![Untitled](Imagens/Untitled%20156.png)
+![Untitled](/Imagens/Untitled%20156.png)
 
 Verificando o Metastore pelo banco de dados MySQL. 
 
@@ -1297,13 +1297,13 @@ USE METASTORE;
 SELECT * FROM TBLS;
 ```
 
-![Untitled](Imagens/Untitled%20157.png)
+![Untitled](/Imagens/Untitled%20157.png)
 
 Metastore da tabela Hive (Datalake) criada com sucesso!
 
 Para esse teste vou incluir arquivos `.csv` no meu HDFS. Estarei utilizando como base um arquivo `.csv` da minha autoria e o repartir em 3 arquivos.
 
-![Untitled](Imagens/Untitled%20158.png)
+![Untitled](/Imagens/Untitled%20158.png)
 
 Criando a pasta cliente e movendo os arquivos `.csv` para dentro dela.
 
@@ -1315,7 +1315,7 @@ hdfs dfs -mv /cliente3.csv /cliente
 hdfs dfs -ls /cliente
 ```
 
-![Untitled](Imagens/Untitled%20159.png)
+![Untitled](/Imagens/Untitled%20159.png)
 
 Estruturando arquivos `.csv` para rodar no Hive.
 
@@ -1338,7 +1338,7 @@ FIELDS TERMINATED BY ','
 location '/cliente/';
 ```
 
-![Untitled](Imagens/Untitled%20160.png)
+![Untitled](/Imagens/Untitled%20160.png)
 
 Executando uma query
 
@@ -1346,7 +1346,7 @@ Executando uma query
 SELECT * FROM CLIENTE;
 ```
 
-![Untitled](Imagens/Untitled%20161.png)
+![Untitled](/Imagens/Untitled%20161.png)
 
 Concluído o teste com o Hive!
 

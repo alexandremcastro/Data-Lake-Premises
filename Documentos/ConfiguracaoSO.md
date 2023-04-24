@@ -26,27 +26,27 @@ Selecione o Namenode e os Datanodes e clique em:
 
 - Iniciar (T)
 
-![Untitled](Imagens/Untitled%2032.png)
+![Untitled](/Imagens/Untitled%2032.png)
 
 Abrirá neste menu.
 
 Selecione a primeira opção apertando o ‘Enter’ do teclado.
 
-![Untitled](Imagens/Untitled%2033.png)
+![Untitled](/Imagens/Untitled%2033.png)
 
 Após iniciar e aguardar os logs de inicialização, faça o login criado na instalação, realizado na  etapa anterior.
 
-![Untitled](Imagens/Untitled%2034.png)
+![Untitled](/Imagens/Untitled%2034.png)
 
 Repita esse processo para todos os Datanodes.
 
 Datanode1:
 
-![Untitled](Imagens/Untitled%2035.png)
+![Untitled](/Imagens/Untitled%2035.png)
 
 Datanode2: 
 
-![Untitled](Imagens/Untitled%2036.png)
+![Untitled](/Imagens/Untitled%2036.png)
 
 Após ligar e logar em todas máquinas, precisamos do IP de cada uma delas para realizar a conexão via SSH. Entre em cada máquina e colete o IP delas através do comando:
 
@@ -54,7 +54,7 @@ Após ligar e logar em todas máquinas, precisamos do IP de cada uma delas para 
 ip a 
 ```
 
-![Untitled](Imagens/Untitled%2037.png)
+![Untitled](/Imagens/Untitled%2037.png)
 
 IP das minhas máquinas:
 
@@ -98,7 +98,7 @@ Conectando com a minha máquina no Namenode:
 ssh datalake@192.168.1.16
 ```
 
-![Neste momento já estou conectado ao meu Namenode pelo SSH na minha máquina local.](Imagens/Untitled%2038.png)
+![Neste momento já estou conectado ao meu Namenode pelo SSH na minha máquina local.](/Imagens/Untitled%2038.png)
 
 Neste momento já estou conectado ao meu Namenode pelo SSH na minha máquina local.
 
@@ -110,7 +110,7 @@ Conexão com o Datanode1:
 ssh datalake@192.168.1.14
 ```
 
-![Untitled](Imagens/Untitled%2039.png)
+![Untitled](/Imagens/Untitled%2039.png)
 
 Conexão com o Datanode2:
 
@@ -118,7 +118,7 @@ Conexão com o Datanode2:
 ssh datalake@192.168.1.15
 ```
 
-![Untitled](Imagens/Untitled%2040.png)
+![Untitled](/Imagens/Untitled%2040.png)
 
 Agora, estamos oficialmente 100% prontos para as configurações do Linux.
 
@@ -152,7 +152,7 @@ Insira dentro do arquivo o nome do usuário datalake.
 datalake    ALL=(ALL)    ALL
 ```
 
-![Untitled](Imagens/Untitled%2041.png)
+![Untitled](/Imagens/Untitled%2041.png)
 
 Salve o arquivo e saia do perfil Root, executando o comando:
 
@@ -178,7 +178,7 @@ sudo yum update
 
 Quando terminar a atualização ele mostrará uma mensagem de concluído na tela.
 
-![Untitled](Imagens/Untitled%2042.png)
+![Untitled](/Imagens/Untitled%2042.png)
 
 <br>
 <a name = "Hosts"></a>
@@ -199,11 +199,11 @@ Informe para o arquivo hosts qual são os IP’s das máquinas que ele fará con
 192.168.1.15   datanode2
 ```
 
-![Untitled](Imagens/Untitled%2043.png)
+![Untitled](/Imagens/Untitled%2043.png)
 
 Repita esse processo para todas as máquinas modificando os IP’s e nomes das máquinas.
 
-![Untitled](Imagens/Untitled%2044.png)
+![Untitled](/Imagens/Untitled%2044.png)
 
 Depois de configurado, devemos testar para ver se as máquinas estão se comunicando entre-si, só rodar o comando em qualquer máquina:
 
@@ -212,7 +212,7 @@ ping datanode1
 ping datanode2
 ```
 
-![Caso o ping esteja retornando os milissegundos entre as conexões, significa que foi configurado corretamente.](Imagens/Untitled%2045.png)
+![Caso o ping esteja retornando os milissegundos entre as conexões, significa que foi configurado corretamente.](/Imagens/Untitled%2045.png)
 
 Caso o ping esteja retornando os milissegundos entre as conexões, significa que foi configurado corretamente.
 
@@ -242,7 +242,7 @@ ListenAddress ::
 PubkeyAuthentication yes
 ```
 
-![Untitled](Imagens/Untitled%2046.png)
+![Untitled](/Imagens/Untitled%2046.png)
 
 Por último reinicie o serviço do sshd para alterar as configurações feitas:
 
@@ -279,7 +279,7 @@ Caso queira fazer alguma modificação na chave, você tem essa opção, no meu 
 
 </aside>
 
-![Untitled](Imagens/Untitled%2047.png)
+![Untitled](/Imagens/Untitled%2047.png)
 
 Para verificar a criação da chave utilize o comando:
 
@@ -295,7 +295,7 @@ comando:
 cat ~/.ssh/id_rsa
 ```
 
-![Untitled](Imagens/Untitled%2048.png)
+![Untitled](/Imagens/Untitled%2048.png)
 
 Chave gerada! É necessário copiar essa chave para o próprio usuário datalake
 
@@ -316,7 +316,7 @@ ssh-copy-id -i ~/.ssh/id_rsa datalake@datanode1
 ssh-copy-id -i ~/.ssh/id_rsa datalake@datanode2
 ```
 
-![Será solicitado a confirmação da conexão, só responder com `yes` e também será solicitado a senha do usuário.](Imagens/Untitled%2049.png)
+![Será solicitado a confirmação da conexão, só responder com `yes` e também será solicitado a senha do usuário.](/Imagens/Untitled%2049.png)
 
 Será solicitado a confirmação da conexão, só responder com `yes` e também será solicitado a senha do usuário.
 
@@ -332,7 +332,7 @@ Repita esse comando para todos os Datanodes.
 
 </aside>
 
-![Untitled](Imagens/Untitled%2050.png)
+![Untitled](/Imagens/Untitled%2050.png)
 
 Para verificar o funcionamento da chave, vou conectar através do SSH nos Datanodes.
 
@@ -341,7 +341,7 @@ ssh datalake@datanode1 -i ~/.ssh/id_rsa
 ssh datalake@datanode2 -i ~/.ssh/id_rsa
 ```
 
-![Conexão feita com sucesso, sem solicitar a senha, perceba que agora possui duas janelas de Datanode1. Verifique se os outros Datanodes também estão se conectando via SSH sem pedir senha.](Imagens/Untitled%2051.png)
+![Conexão feita com sucesso, sem solicitar a senha, perceba que agora possui duas janelas de Datanode1. Verifique se os outros Datanodes também estão se conectando via SSH sem pedir senha.](/Imagens/Untitled%2051.png)
 
 Conexão feita com sucesso, sem solicitar a senha, perceba que agora possui duas janelas de Datanode1. Verifique se os outros Datanodes também estão se conectando via SSH sem pedir senha.
 

@@ -5,7 +5,7 @@ Projeto ponta a ponta de Big Data utilizando as principais ferramentas do ecossi
 
 Essa será a arquitetura a ser seguida no projeto:
 
-![Group](Imagens/Group.png)
+![Group](/Imagens/Group.png)
 
 * <b> O que é um Data Lake: </b> É uma arquitetura de armazenamento que tem como finalidade permitir que as empresas possam armazenar e processar grandes volumes de dados de diferentes fontes e formatos em um ambiente centralizado, escalável e flexível. Diferentemente dos sistemas de banco de dados tradicionais, um Data Lake não requer uma estruturação prévia dos dados, permitindo que os dados brutos sejam armazenados sem a necessidade de modelagem ou esquematização prévia.
 
