@@ -1,4 +1,4 @@
-# Data Lake Premises
+# Data Lake On-Premises
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/alexandremcastro/Data-Lake-Premises/blob/main/LICENSE)
 
 Projeto ponta a ponta de Big Data utilizando as principais ferramentas do ecossistema Hadoop/Apache, bancos de dados Oracle e MySQL e Linux (CentOS) com máquinas virtuais, fornecendo um ambiente completo de um Data Lake, desde como baixar até o seu funcionamento por completo.
@@ -85,6 +85,12 @@ Este projeto experimental é o produto de minhas experiências com Data Lake, on
 * [Download do Datanode1](https://drive.google.com/file/d/1fn7T5Uj0oq8kOxIRWwCQBj7NLmxcerhl/view)<br/>
 
 * [Download do Datanode2](https://drive.google.com/file/d/1L7h5wPItRQrJplu9TPQphhLXLvJ7Fys3/view)<br/>
+
+* [O que é um data lake? - AWS](https://aws.amazon.com/pt/big-data/datalakes-and-analytics/what-is-a-data-lake/)<br/>
+
+* [Os 4 Estágios Para Construir um Data Lake de Forma Eficiente - DSA](https://blog.dsacademy.com.br/os-4-estagios-para-construir-um-data-lake-de-forma-eficiente/)<br/>
+
+* [Saiba mais sobre Data Lakes baseados em Hadoop no Oracle Cloud](https://docs.oracle.com/pt-br/solutions/hadoop-data-lake/index.html)<br/>
 
 ## Conclusão
 O objetivo final do Data Lake é ajudar as empresas a tomar decisões mais informadas e estratégicas, melhorando a eficiência dos negócios e aumentando a competitividade no mercado. Além disso, o Data Lake também pode ser usado para suportar outras iniciativas, como a conformidade regulatória, a governança de dados e a segurança da informação.
