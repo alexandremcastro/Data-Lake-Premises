@@ -95,7 +95,7 @@ Este projeto experimental é o produto de minhas experiências com Data Lake, on
 
 * [Os 4 Estágios Para Construir um Data Lake de Forma Eficiente - DSA](https://blog.dsacademy.com.br/os-4-estagios-para-construir-um-data-lake-de-forma-eficiente/)<br/>
 
-* [Saiba mais sobre Data Lakes baseados em Hadoop no Oracle Cloud](https://docs.oracle.com/pt-br/solutions/hadoop-data-lake/index.html)<br/>
+* [Saiba mais sobre Data Lakes baseados em Hadoop - Oracle](https://docs.oracle.com/pt-br/solutions/hadoop-data-lake/index.html)<br/>
 
 ## Conclusão
 O objetivo final do Data Lake é ajudar as empresas a tomar decisões mais informadas e estratégicas, melhorando a eficiência dos negócios e aumentando a competitividade no mercado. Além disso, o Data Lake também pode ser usado para suportar outras iniciativas, como a conformidade regulatória, a governança de dados e a segurança da informação.
