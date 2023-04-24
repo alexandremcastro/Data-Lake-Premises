@@ -715,6 +715,7 @@ Chave configurada, tudo oficialmente pronto para o início da instalação do Ha
 
 <br>
 <a name = "Java"></a>
+
 ### Instalação e configuração do Java JDK 8
 
 Maior parte das aplicações da Apache roda sobre o Java, para isso devemos instalar o Java JDK, estarei utilizando a versão 8 porque é compatível com maior parte dos componentes, por mais que a versão do Hadoop atual suporte o Java 11.
@@ -851,11 +852,10 @@ Agora é possível a instalação do Hadoop.
 
 <br>
 <a name = "Hadoop"></a>
+
 ### Instalação e configuração do Apache Hadoop
 
-<aside>
-💡 Para a instalação do Hadoop, certifique que todas as máquinas estejam iniciadas e com o Java JDK instalado.
-</aside>
+> **Note**: Para a instalação do Hadoop, certifique que todas as máquinas estejam iniciadas e com o Java JDK instalado.
 
 Primeiro passo é fazer o Download do arquivo binário do Hadoop 3.3.4:
 
