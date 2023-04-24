@@ -48,7 +48,7 @@ Este projeto experimental é o produto de minhas experiências com Data Lake, on
 
 > **Nota**: Este projeto foi concluído em dezembro de 2022, e é importante ressaltar que alguns dos requisitos abordados podem sofrer alterações ao longo do tempo. Como em qualquer área de tecnologia, novas soluções e tecnologias surgem constantemente, o que pode tornar algumas das abordagens e soluções apresentadas neste projeto desatualizadas em algum momento.
 
-<b>Hardware:</b> Ao menos 8GB de memória RAM e 50GB de armazenamento interno.
+<b>Hardware:</b> Ao menos 8GB de memória RAM.
 
 <b>Sistema operacional:</b> Linux, Windows ou MacOS.
 
