@@ -48,13 +48,13 @@ Este projeto experimental é o produto de minhas experiências com Data Lake, on
 
 > **Nota**: Este projeto foi concluído em dezembro de 2022, e é importante ressaltar que alguns dos requisitos abordados podem sofrer alterações ao longo do tempo. Como em qualquer área de tecnologia, novas soluções e tecnologias surgem constantemente, o que pode tornar algumas das abordagens e soluções apresentadas neste projeto desatualizadas em algum momento.
 
-Hardware: Ao menos 8GB de memória RAM e 50GB de armazenamento interno.
+<b>Hardware:</b> Ao menos 8GB de memória RAM e 50GB de armazenamento interno.
 
-Sistema operacional: Linux, Windows ou MacOS.
+<b>Sistema operacional:</b> Linux, Windows ou MacOS.
 
-Espaço em disco: Ao menos 50GB de espaço em disco.
+<b>Espaço em disco:</b> Ao menos 50GB de espaço em disco.
 
-Rede: O Data Lake requer uma rede adequada para comunicação com outras máquinas e para acesso remoto.
+<b>Rede:</b> O Data Lake requer uma rede adequada para comunicação com outras máquinas e para acesso remoto.
 
 ## Tarefas
 <b> Tarefas concluídas </b>
