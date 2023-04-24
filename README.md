@@ -66,9 +66,10 @@ Este projeto experimental é o produto de minhas experiências com Data Lake, on
 
 <b> Futuras implementações </b>
 
-- [ ] Automatizar os processos de instalação com bash script
 - [ ] Acrescentar novas fontes de dados
 - [ ] Acrescentar conexões com as novas fontes de dados
+- [ ] Automatizar os processos de instalação com bash script
+- [ ] Automatizar os processos de configuração com bash script
 
 ## Links <a name = "Links"></a>
 * [Projeto no Site](https://alexandre-castro.vercel.app/blog/datalake-premises)
