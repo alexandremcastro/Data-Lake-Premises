@@ -72,6 +72,7 @@ Este projeto experimental é o produto de minhas experiências com Data Lake, on
 - [ ] Automatizar os processos de configuração com bash script
 
 ## Links <a name = "Links"></a>
+**Projeto:**
 * [Projeto no Site](https://alexandre-castro.vercel.app/blog/datalake-premises)
 
 * [Projeto no Notion](https://alexandremcastro.notion.site/12-2022-Data-Lake-On-Premises-9845115c23374331a7a65c658fe3eeb1)
@@ -80,11 +81,15 @@ Este projeto experimental é o produto de minhas experiências com Data Lake, on
 
 * [Projeto no GitHub](https://github.com/alexandremcastro/Data-Lake-Premises)
 
+**Downloads:**
+
 * [Download do Namenode](https://drive.google.com/file/d/1NrVKQ5mOb87hJMWtXDEWQa_Fg3f8GavX/view)<br/>
 
 * [Download do Datanode1](https://drive.google.com/file/d/1fn7T5Uj0oq8kOxIRWwCQBj7NLmxcerhl/view)<br/>
 
 * [Download do Datanode2](https://drive.google.com/file/d/1L7h5wPItRQrJplu9TPQphhLXLvJ7Fys3/view)<br/>
+
+**Artigos orientadores:**
 
 * [O que é um data lake? - AWS](https://aws.amazon.com/pt/big-data/datalakes-and-analytics/what-is-a-data-lake/)<br/>
 
