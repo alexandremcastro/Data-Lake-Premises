@@ -13,7 +13,7 @@ Iniciar o Virtualbox e selecionar a opção:
 
 - Novo
 
-![Captura de tela de 2022-11-09 10-38-04.png](Imagens/Captura_de_tela_de_2022-11-09_10-38-04.png)
+![Captura de tela de 2022-11-09 10-38-04.png](/Imagens/Imagens/Captura_de_tela_de_2022-11-09_10-38-04.png)
 
 Segue o modelo de criação das diferentes máquinas:
 
